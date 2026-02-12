@@ -1,0 +1,20 @@
+stack:
+  - nodejs
+  - nextjs
+  - typescript
+  - docker
+integrations:
+  - supabase
+  - playwright
+  - tavily
+  - stitch
+skills:
+  - app-builder
+  - architecture
+  - nodejs-best-practices
+  - react-best-practices
+  - database-design
+  - docker-expert
+  - mcp-builder
+  - clean-code
+  - webapp-testing

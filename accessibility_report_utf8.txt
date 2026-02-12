@@ -1,0 +1,46 @@
+﻿
+============================================================
+[ACCESSIBILITY CHECKER] WCAG Compliance Audit
+============================================================
+Project: C:\Users\Sergio\Documents\antigravity\setembro.net\site_setembro
+Time: 2026-02-12 19:54:32
+------------------------------------------------------------
+Found 18 HTML/JSX/TSX files
+
+============================================================
+ACCESSIBILITY ISSUES
+============================================================
+
+page.tsx:
+  - Consider adding skip-to-main-content link
+
+Badge.tsx:
+  - Missing lang attribute on <html>
+
+Button.tsx:
+  - Missing lang attribute on <html>
+
+Input.tsx:
+  - Input without label or aria-label
+  - Missing lang attribute on <html>
+
+SearchField.tsx:
+  - Input without label or aria-label
+
+page.tsx:
+  - Consider adding skip-to-main-content link
+
+page.tsx:
+  - Consider adding skip-to-main-content link
+
+page.tsx:
+  - Consider adding skip-to-main-content link
+
+{
+  "script": "accessibility_checker",
+  "project": "C:\\Users\\Sergio\\Documents\\antigravity\\setembro.net\\site_setembro",
+  "files_checked": 18,
+  "files_with_issues": 8,
+  "issues_found": 9,
+  "passed": false
+}
