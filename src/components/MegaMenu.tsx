@@ -75,56 +75,56 @@ export function MegaMenu() {
 
                 {/* Automation */}
                 <NavigationMenuItem>
-                    <Link href="/automation" legacyBehavior passHref>
-                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                        <Link href="/automation">
                             {t('automation')}
-                        </NavigationMenuLink>
-                    </Link>
+                        </Link>
+                    </NavigationMenuLink>
                 </NavigationMenuItem>
 
                 {/* Marketing */}
                 <NavigationMenuItem>
-                    <Link href="/marketing" legacyBehavior passHref>
-                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                        <Link href="/marketing">
                             {t('marketing')}
-                        </NavigationMenuLink>
-                    </Link>
+                        </Link>
+                    </NavigationMenuLink>
                 </NavigationMenuItem>
 
                 {/* Design */}
                 <NavigationMenuItem>
-                    <Link href="/design" legacyBehavior passHref>
-                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                        <Link href="/design">
                             {t('design')}
-                        </NavigationMenuLink>
-                    </Link>
+                        </Link>
+                    </NavigationMenuLink>
                 </NavigationMenuItem>
 
                 {/* AI */}
                 <NavigationMenuItem>
-                    <Link href="/ai" legacyBehavior passHref>
-                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                        <Link href="/ai">
                             {t('ai')}
-                        </NavigationMenuLink>
-                    </Link>
+                        </Link>
+                    </NavigationMenuLink>
                 </NavigationMenuItem>
 
                 {/* Hosting */}
                 <NavigationMenuItem>
-                    <Link href="/hosting" legacyBehavior passHref>
-                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                        <Link href="/hosting">
                             {t('hosting')}
-                        </NavigationMenuLink>
-                    </Link>
+                        </Link>
+                    </NavigationMenuLink>
                 </NavigationMenuItem>
 
                 {/* Blog (Direct Link) */}
                 <NavigationMenuItem>
-                    <Link href="/blog" legacyBehavior passHref>
-                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                        <Link href="/blog">
                             {t('blog')}
-                        </NavigationMenuLink>
-                    </Link>
+                        </Link>
+                    </NavigationMenuLink>
                 </NavigationMenuItem>
 
             </NavigationMenuList>
