@@ -6,7 +6,12 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Bot, Zap, BarChart2, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
-export default function HomePage() {
+export default async function HomePage({
+    params
+}: {
+    params: Promise<{ locale: string }>;
+}) {
+    const { locale } = await params;
     const t = useTranslations("HomePage");
 
     return (
