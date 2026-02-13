@@ -3,10 +3,14 @@ import { SupabaseAgentRepository } from '@/infrastructure/adapters/SupabaseAgent
 import { SupabaseVectorStore } from '@/infrastructure/adapters/SupabaseVectorStore';
 import OpenAI from 'openai';
 
-// Initialize OpenAI client
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-});
+// Initialize OpenAI client lazily to avoid build errors if env is missing
+const getOpenAIClient = () => {
+    const apiKey = process.env.OPENAI_API_KEY;
+    if (!apiKey) {
+        throw new Error("OPENAI_API_KEY is not defined");
+    }
+    return new OpenAI({ apiKey });
+};
 
 export async function POST(
     request: NextRequest,
@@ -23,6 +27,8 @@ export async function POST(
                 { status: 400 }
             );
         }
+
+        const openai = getOpenAIClient();
 
         const currentMessage = message || messages[messages.length - 1].content;
 

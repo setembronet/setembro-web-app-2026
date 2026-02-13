@@ -1,25 +1,4 @@
 {
-  "HomePage": {
-    "title": "Setembro.net - Inteligência Artificial para Negócios",
-    "description": "Transformamos empresas com automação inteligente e soluções de IA personalizadas."
-  },
-  "AdminLayout": {
-    "dashboard": "Painel",
-    "leads": "Leads",
-    "posts": "Posts",
-    "agents": "Agentes"
-  },
-  "Navbar": {
-    "web_dev": "Dev Web",
-    "systems": "Sistemas",
-    "automation": "Automação",
-    "marketing": "Marketing",
-    "design": "Design",
-    "ai": "IA",
-    "hosting": "Hosting",
-    "blog": "Blog"
-  },
-  "MegaMenu": {
     "web_dev": "Desenvolvimento Web",
     "web_dev_desc": "Sites e aplicações de alta performance.",
     "custom_sites": "Sites Personalizados",
@@ -39,5 +18,4 @@
     "ai": "Inteligência Artificial",
     "hosting": "Hospedagem",
     "blog": "Blog"
-  }
 }
