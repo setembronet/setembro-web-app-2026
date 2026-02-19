@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { useTranslations } from "next-intl"
+// import { useTranslations } from "next-intl"
 
 import { cn } from "@/lib/utils"
 // import { Icons } from "@/components/icons" // We will use Lucide icons for now
@@ -18,20 +18,18 @@ import {
 import { Code, Server, Workflow, Megaphone, Palette, Bot, Cloud, BookOpen } from "lucide-react"
 
 export function MegaMenu() {
-    const t = useTranslations("MegaMenu")
-
     return (
         <NavigationMenu>
             <NavigationMenuList>
 
                 {/* Web Development */}
                 <NavigationMenuItem>
-                    <NavigationMenuTrigger className="bg-transparent">{t('web_dev')}</NavigationMenuTrigger>
+                    <NavigationMenuTrigger className="bg-transparent">Desenvolvimento Web</NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                             <li className="row-span-3">
                                 <NavigationMenuLink asChild>
-                                    <a
+                                    <Link
                                         className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                                         href="/"
                                     >
@@ -40,19 +38,19 @@ export function MegaMenu() {
                                             Setembro Dev
                                         </div>
                                         <p className="text-sm leading-tight text-muted-foreground">
-                                            {t('web_dev_desc')}
+                                            Sites e aplicações de alta performance.
                                         </p>
-                                    </a>
+                                    </Link>
                                 </NavigationMenuLink>
                             </li>
-                            <ListItem href="/web/custom" title={t('custom_sites')}>
-                                {t('custom_sites_desc')}
+                            <ListItem href="/web/custom" title="Sites Personalizados">
+                                Feito sob medida para sua marca.
                             </ListItem>
-                            <ListItem href="/web/ecommerce" title={t('ecommerce')}>
-                                {t('ecommerce_desc')}
+                            <ListItem href="/web/ecommerce" title="E-commerce">
+                                Venda online, receba pagamentos.
                             </ListItem>
-                            <ListItem href="/web/layouts" title={t('exclusive_layouts')}>
-                                {t('exclusive_layouts_desc')}
+                            <ListItem href="/web/layouts" title="Layouts Exclusivos">
+                                Designs únicos, sem templates.
                             </ListItem>
                         </ul>
                     </NavigationMenuContent>
@@ -60,14 +58,14 @@ export function MegaMenu() {
 
                 {/* Systems */}
                 <NavigationMenuItem>
-                    <NavigationMenuTrigger className="bg-transparent">{t('systems')}</NavigationMenuTrigger>
+                    <NavigationMenuTrigger className="bg-transparent">Sistemas</NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                            <ListItem title={t('custom_dev')} href="/systems/custom">
-                                <Server className="w-4 h-4 mr-2 inline" />{t('custom_dev_desc')}
+                            <ListItem title="Desenvolvimento Sob Medida" href="/systems/custom">
+                                <Server className="w-4 h-4 mr-2 inline" />Software que se adapta ao seu negócio.
                             </ListItem>
-                            <ListItem title={t('api_integration')} href="/systems/api">
-                                <Server className="w-4 h-4 mr-2 inline" />{t('api_integration_desc')}
+                            <ListItem title="Integração de APIs" href="/systems/api">
+                                <Server className="w-4 h-4 mr-2 inline" />Conecte suas ferramentas sem esforço.
                             </ListItem>
                         </ul>
                     </NavigationMenuContent>
@@ -77,7 +75,7 @@ export function MegaMenu() {
                 <NavigationMenuItem>
                     <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
                         <Link href="/automation">
-                            {t('automation')}
+                            Automação
                         </Link>
                     </NavigationMenuLink>
                 </NavigationMenuItem>
@@ -86,7 +84,7 @@ export function MegaMenu() {
                 <NavigationMenuItem>
                     <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
                         <Link href="/marketing">
-                            {t('marketing')}
+                            Marketing & SEO
                         </Link>
                     </NavigationMenuLink>
                 </NavigationMenuItem>
@@ -95,7 +93,7 @@ export function MegaMenu() {
                 <NavigationMenuItem>
                     <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
                         <Link href="/design">
-                            {t('design')}
+                            Design
                         </Link>
                     </NavigationMenuLink>
                 </NavigationMenuItem>
@@ -104,7 +102,7 @@ export function MegaMenu() {
                 <NavigationMenuItem>
                     <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
                         <Link href="/ai">
-                            {t('ai')}
+                            Inteligência Artificial
                         </Link>
                     </NavigationMenuLink>
                 </NavigationMenuItem>
@@ -113,7 +111,7 @@ export function MegaMenu() {
                 <NavigationMenuItem>
                     <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
                         <Link href="/hosting">
-                            {t('hosting')}
+                            Hospedagem
                         </Link>
                     </NavigationMenuLink>
                 </NavigationMenuItem>
@@ -122,7 +120,7 @@ export function MegaMenu() {
                 <NavigationMenuItem>
                     <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
                         <Link href="/blog">
-                            {t('blog')}
+                            Blog
                         </Link>
                     </NavigationMenuLink>
                 </NavigationMenuItem>
@@ -134,13 +132,17 @@ export function MegaMenu() {
 
 const ListItem = React.forwardRef<
     React.ElementRef<"a">,
-    React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+    React.ComponentPropsWithoutRef<typeof Link>
+>(({ className, title, children, href, ...props }, ref) => {
+    // Ensuring href is string as Link expects
+    const validHref = (typeof href === "string" ? href : "") as any;
+
     return (
         <li>
             <NavigationMenuLink asChild>
-                <a
-                    ref={ref}
+                <Link
+                    ref={ref as any}
+                    href={validHref}
                     className={cn(
                         "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                         className
@@ -151,7 +153,7 @@ const ListItem = React.forwardRef<
                     <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                         {children}
                     </p>
-                </a>
+                </Link>
             </NavigationMenuLink>
         </li>
     )

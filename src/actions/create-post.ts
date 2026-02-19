@@ -7,15 +7,47 @@ import { redirect } from "next/navigation";
 export async function createPost(prevState: any, formData: FormData) {
     const supabase = await createClient();
 
+    const title = formData.get('title') as string;
+    const content = formData.get('content') as string;
+
+    // Calculate reading time directly here for now (simple heuristic: 200 words/min)
+    const words = content ? content.trim().split(/\s+/).length : 0;
+    const reading_time = Math.ceil(words / 200);
+
+    let slug = formData.get('slug') as string;
+
+    // Ensure slug uniqueness (simple append random string if exists - or better, check DB)
+    // For MVP/Speed, we'll append a random 4-char string if it's a new post or slug changed
+    // Real implementation would check DB, but here we trust the form unless conflict
+    // Actually, let's just sanitise it here.
+    slug = slug.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+
+    // Get default author if needed
+    const { data: defaultAuthor } = await supabase
+        .from('authors')
+        .select('id')
+        .limit(1)
+        .single();
+
+    const category_id = formData.get('category_id') as string;
+
     const rawData = {
-        title: formData.get('title') as string,
-        slug: formData.get('slug') as string,
-        category_id: formData.get('category_id') as string,
+        title,
+        slug,
+        category_id: category_id && category_id.length > 10 ? category_id : undefined, // crude UUID check
+        author_id: defaultAuthor?.id, // Ensure author is linked
         excerpt: formData.get('excerpt') as string,
-        content: formData.get('content') as string,
-        image: formData.get('image') as string,
-        is_published: formData.get('is_published') === 'on',
-        published_at: new Date().toISOString(),
+        content,
+        featured_image_alt: formData.get('featured_image_alt') as string,
+        // is_published: formData.get('is_published') === 'on', // Deprecated
+        status: formData.get('status') as string || 'draft',
+        published_at: formData.get('published_at') as string || new Date().toISOString(),
+        is_featured: formData.get('is_featured') === 'on',
+        meta_title: formData.get('meta_title') as string,
+        meta_description: formData.get('meta_description') as string,
+        canonical_url: formData.get('canonical_url') as string,
+        reading_time,
+        faq_items: JSON.parse(formData.get('faq_items') as string || '[]'),
     };
 
     const { error } = await supabase
@@ -23,6 +55,15 @@ export async function createPost(prevState: any, formData: FormData) {
         .insert(rawData);
 
     if (error) {
+        // If unique violation on slug, try appending random suffix
+        if (error.code === '23505' && error.message.includes('slug')) { // Unique violation
+            const newSlug = `${slug}-${Math.random().toString(36).substring(2, 6)}`;
+            console.log(`Slug conflict for ${slug}, trying ${newSlug}`);
+            return createPost(prevState, {
+                ...formData,
+                get: (key: string) => (key === 'slug' ? newSlug : formData.get(key)),
+            } as any);
+        }
         return { success: false, message: error.message };
     }
 

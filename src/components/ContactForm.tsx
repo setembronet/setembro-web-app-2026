@@ -6,10 +6,10 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { submitLead } from "@/actions/submit-lead";
 import { toast } from "sonner";
-import { useTranslations } from "next-intl";
+// import { useTranslations } from "next-intl"; // Removed
 
 export function ContactForm({ category = "General" }: { category?: string }) {
-    const t = useTranslations("HomePage");
+    // const t = useTranslations("HomePage"); // Removed
     const [pending, setPending] = useState(false);
     const [sourceUrl, setSourceUrl] = useState("");
 
@@ -36,7 +36,7 @@ export function ContactForm({ category = "General" }: { category?: string }) {
     return (
         <form action={handleSubmit} className="space-y-4">
             <input type="hidden" name="interest_category" value={category} />
-            <input type="hidden" name="source_url" value={sourceUrl} />
+            <input type="hidden" name="source_url" value={sourceUrl} suppressHydrationWarning />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                     <Input id="name" name="name" placeholder="Seu nome" required className="bg-background/50" />

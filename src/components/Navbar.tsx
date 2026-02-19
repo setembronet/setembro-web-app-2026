@@ -1,9 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useTranslations } from "next-intl";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
@@ -11,18 +9,17 @@ import { useState } from "react";
 import { MegaMenu } from "@/components/MegaMenu";
 
 export function Navbar() {
-    const t = useTranslations("Navbar");
     const [isOpen, setIsOpen] = useState(false);
 
     const navItems = [
-        { href: "/web", label: t("web_dev") },
-        { href: "/systems", label: t("systems") },
-        { href: "/automation", label: t("automation") },
-        { href: "/marketing", label: t("marketing") },
-        { href: "/design", label: t("design") },
-        { href: "/ai", label: t("ai") },
-        { href: "/hosting", label: t("hosting") },
-        { href: "/blog", label: t("blog") },
+        { href: "/web", label: "Desenvolvimento Web" },
+        { href: "/systems", label: "Sistemas" },
+        { href: "/automation", label: "Automação" },
+        { href: "/marketing", label: "Marketing" },
+        { href: "/design", label: "Design" },
+        { href: "/ai", label: "IA" },
+        { href: "/hosting", label: "Hospedagem" },
+        { href: "/blog", label: "Blog" },
     ];
 
     return (
@@ -40,7 +37,6 @@ export function Navbar() {
                 <div className="flex items-center gap-2">
                     <div className="hidden md:flex items-center gap-2">
                         <ThemeToggle />
-                        <LanguageSwitcher />
                     </div>
 
                     <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -74,7 +70,6 @@ export function Navbar() {
                                 </nav>
                                 <div className="flex items-center gap-4 mt-4">
                                     <ThemeToggle />
-                                    <LanguageSwitcher />
                                 </div>
                             </div>
                         </SheetContent>

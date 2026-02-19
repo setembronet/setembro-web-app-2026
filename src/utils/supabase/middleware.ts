@@ -46,26 +46,32 @@ export async function updateSession(request: NextRequest, response?: NextRespons
 
     if (request.nextUrl.pathname.startsWith('/admin')) {
         if (!user) {
-            // no user, potentially respond by redirecting the user to the login page
+            console.error("Middleware: No User, Redirecting to /login");
             const url = request.nextUrl.clone()
             url.pathname = '/login'
-            return NextResponse.redirect(url)
+            const redirectResponse = NextResponse.redirect(url)
+            // Copy cookies from supabaseResponse to redirectResponse
+            const cookies = supabaseResponse.cookies.getAll()
+            cookies.forEach(cookie => redirectResponse.cookies.set(cookie.name, cookie.value, cookie))
+            return redirectResponse
         }
 
-        // Check for Admin Role using the SAME supabase client
-        // Note: This adds a DB query on admin routes
-        const { data: profile } = await supabase
-            .from('profiles')
-            .select('role')
-            .eq('id', user.id)
-            .single()
+        // Check for Admin Role using user_metadata
+        // This avoids a DB query and potential RLS issues in middleware
+        const role = user.user_metadata?.role;
 
-        // If no profile or not admin, redirect to home
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        if (!profile || (profile as any).role !== 'admin') {
+        console.log("Middleware Admin Check:", { userId: user.id, role });
+
+        // If no role or not admin, redirect to home
+        if (role !== 'admin') {
+            console.error("Middleware: Not Admin (Metadata check), Redirecting to /");
             const url = request.nextUrl.clone()
             url.pathname = '/'
-            return NextResponse.redirect(url)
+            const redirectResponse = NextResponse.redirect(url)
+            // Copy cookies from supabaseResponse to redirectResponse
+            const cookies = supabaseResponse.cookies.getAll()
+            cookies.forEach(cookie => redirectResponse.cookies.set(cookie.name, cookie.value, cookie))
+            return redirectResponse
         }
     }
 

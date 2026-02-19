@@ -2,9 +2,13 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
+import { headers } from "next/headers";
 
 export async function submitLead(formData: FormData) {
     const supabase = await createClient();
+    const headersList = await headers();
+    const userAgent = headersList.get("user-agent") || "Unknown";
+    const referrer = headersList.get("referer") || "Direct";
 
     const rawData = {
         user_name: formData.get('name') as string,
@@ -15,6 +19,8 @@ export async function submitLead(formData: FormData) {
         type: 'contact_form',
         metadata: {
             source: 'landing_page',
+            user_agent: userAgent,
+            referrer: referrer
         }
     };
 
