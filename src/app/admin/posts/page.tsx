@@ -26,12 +26,12 @@ export default async function PostsPage() {
         <div className="space-y-4">
             <div className="flex items-center justify-between">
                 <h1 className="text-3xl font-bold tracking-tight">Artigos</h1>
-                <Link href="/admin/posts/new">
-                    <Button>
+                <Button asChild>
+                    <Link href="/admin/posts/new">
                         <PlusCircle className="mr-2 h-4 w-4" />
                         Novo Artigo
-                    </Button>
-                </Link>
+                    </Link>
+                </Button>
             </div>
 
             <div className="rounded-md border bg-card">

@@ -82,6 +82,7 @@ export function PostForm({ initialData, isEditing = false, categories = [] }: Po
     const router = useRouter();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isGeneratingSEO, setIsGeneratingSEO] = useState(false);
+    const [isGeneratingDraft, setIsGeneratingDraft] = useState(false);
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -141,11 +142,45 @@ export function PostForm({ initialData, isEditing = false, categories = [] }: Po
             if (!form.getValues("excerpt")) {
                 form.setValue("excerpt", data.excerpt);
             }
+            if (data.faq_items && Array.isArray(data.faq_items)) {
+                form.setValue("faq_items", data.faq_items);
+            }
             toast.success("Metadados SEO gerados!");
         } catch (error) {
             toast.error("Falha ao gerar SEO");
         } finally {
             setIsGeneratingSEO(false);
+        }
+    }
+
+    async function handleGenerateDraft() {
+        const topic = window.prompt("Qual o tópico desejado para o artigo da IA?");
+        if (!topic) return;
+
+        setIsGeneratingDraft(true);
+        toast.info("Iniciando modo criativo (Agente Julia)... isso pode levar um momento.");
+
+        try {
+            const response = await fetch("/api/generate-post", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ topic }),
+            });
+            const data = await response.json();
+
+            if (data.error) throw new Error(data.error);
+
+            const currentContent = form.getValues("content") || "";
+            const newContent = currentContent
+                ? `${currentContent}\n\n<hr class="my-8 border-t-2 border-dashed border-primary" />\n\n${data.content}`
+                : data.content;
+
+            form.setValue("content", newContent);
+            toast.success("Rascunho gerado perfeitamente!");
+        } catch (error) {
+            toast.error("Falha ao gerar o rascunho com IA.");
+        } finally {
+            setIsGeneratingDraft(false);
         }
     }
 
@@ -288,7 +323,24 @@ export function PostForm({ initialData, isEditing = false, categories = [] }: Po
                                     name="content"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Corpo do Texto</FormLabel>
+                                            <div className="flex justify-between items-center mb-1">
+                                                <FormLabel>Corpo do Texto</FormLabel>
+                                                <Button
+                                                    type="button"
+                                                    variant="outline"
+                                                    size="sm"
+                                                    onClick={handleGenerateDraft}
+                                                    disabled={isGeneratingDraft}
+                                                    className="h-8 bg-indigo-50 text-indigo-700 border-indigo-200 hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-300 dark:border-indigo-800"
+                                                >
+                                                    {isGeneratingDraft ? (
+                                                        <Loader2 className="w-3 h-3 mr-2 animate-spin" />
+                                                    ) : (
+                                                        <Wand2 className="w-3 h-3 mr-2" />
+                                                    )}
+                                                    Gerar Rascunho com IA
+                                                </Button>
+                                            </div>
                                             <FormControl>
                                                 <RichTextEditor
                                                     placeholder="Escreva seu artigo aqui..."

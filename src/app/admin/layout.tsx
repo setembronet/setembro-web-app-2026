@@ -21,6 +21,7 @@ export default function AdminLayout({
         { href: "/admin/categories", label: "Categorias" },
         { href: "/admin/testimonials", label: "Depoimentos" },
         { href: "/admin/agents", label: "Agentes" },
+        { href: "/admin/settings", label: "Configurações" },
     ];
 
     return (

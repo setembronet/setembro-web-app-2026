@@ -37,11 +37,11 @@ export async function LatestPostsSection() {
                             Fique por dentro das novidades sobre tecnologia, IA e automação.
                         </p>
                     </div>
-                    <Link href="/blog">
-                        <Button variant="ghost" className="gap-2">
+                    <Button variant="ghost" className="gap-2" asChild>
+                        <Link href="/blog">
                             Ver todos os artigos <ArrowRight className="h-4 w-4" />
-                        </Button>
-                    </Link>
+                        </Link>
+                    </Button>
                 </div>
 
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

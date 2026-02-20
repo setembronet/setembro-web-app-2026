@@ -32,12 +32,22 @@ type Lead = {
     source_url: string;
     status: string;
     message: string;
+    company: string | null;
+    score: number | null;
+    summary: string | null;
     metadata: {
         source?: string;
         user_agent?: string;
         referrer?: string;
     };
 };
+
+function getLeadTemperatureBadge(score: number | null) {
+    if (score === null || score === undefined) return <Badge variant="secondary">Novo</Badge>;
+    if (score >= 80) return <Badge className="bg-red-500 hover:bg-red-600 text-white border-transparent">Quente 🔥</Badge>;
+    if (score >= 50) return <Badge className="bg-yellow-500 hover:bg-yellow-600 text-white border-transparent">Morno ⚡</Badge>;
+    return <Badge className="bg-blue-500 hover:bg-blue-600 text-white border-transparent">Frio ❄️</Badge>;
+}
 
 export default function LeadsPage() {
     const [leads, setLeads] = useState<Lead[]>([]);
@@ -88,6 +98,8 @@ export default function LeadsPage() {
                             <TableHead>Data</TableHead>
                             <TableHead>Nome</TableHead>
                             <TableHead>Email</TableHead>
+                            <TableHead>Empresa</TableHead>
+                            <TableHead>Termômetro</TableHead>
                             <TableHead>Interesse</TableHead>
                             <TableHead>Origem</TableHead>
                             <TableHead>Status</TableHead>
@@ -103,6 +115,10 @@ export default function LeadsPage() {
                                     </TableCell>
                                     <TableCell>{lead.user_name}</TableCell>
                                     <TableCell>{lead.user_email}</TableCell>
+                                    <TableCell>{lead.company || "-"}</TableCell>
+                                    <TableCell>
+                                        {getLeadTemperatureBadge(lead.score)}
+                                    </TableCell>
                                     <TableCell>
                                         <Badge variant="outline">{lead.interest_category || "Geral"}</Badge>
                                     </TableCell>
@@ -158,12 +174,31 @@ export default function LeadsPage() {
                                     <p>{selectedLead.user_email}</p>
                                 </div>
                             </div>
+
+                            {selectedLead.company && (
+                                <div>
+                                    <label className="text-sm font-medium text-muted-foreground">Empresa</label>
+                                    <p>{selectedLead.company}</p>
+                                </div>
+                            )}
+
                             <div>
-                                <label className="text-sm font-medium text-muted-foreground">Mensagem</label>
+                                <label className="text-sm font-medium text-muted-foreground">Mensagem Original</label>
                                 <div className="mt-1 rounded-md bg-muted p-3 text-sm">
-                                    {selectedLead.message}
+                                    {selectedLead.message || "Sem mensagem explícita."}
                                 </div>
                             </div>
+
+                            {selectedLead.summary && (
+                                <div className="mt-4 rounded-lg border-2 border-indigo-200 bg-indigo-50/50 p-4 dark:border-indigo-900/50 dark:bg-indigo-900/10">
+                                    <h4 className="font-semibold text-sm flex items-center gap-2 mb-2 text-indigo-700 dark:text-indigo-400">
+                                        ✨ Resumo Inteligente do Agente (Score: {selectedLead.score || 0})
+                                    </h4>
+                                    <p className="text-sm text-foreground">
+                                        {selectedLead.summary}
+                                    </p>
+                                </div>
+                            )}
 
                             {/* Ray-X Section */}
                             <div className="rounded-lg border p-4 bg-muted/50 space-y-3">

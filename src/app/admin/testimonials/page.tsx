@@ -73,11 +73,11 @@ export default function TestimonialsPage() {
                         Gerencie os depoimentos exibidos na página inicial.
                     </p>
                 </div>
-                <Link href="/admin/testimonials/new">
-                    <Button>
+                <Button asChild>
+                    <Link href="/admin/testimonials/new">
                         <Plus className="mr-2 h-4 w-4" /> Novo Depoimento
-                    </Button>
-                </Link>
+                    </Link>
+                </Button>
             </div>
 
             <div className="rounded-md border bg-card">

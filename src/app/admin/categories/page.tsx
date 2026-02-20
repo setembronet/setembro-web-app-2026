@@ -27,12 +27,12 @@ export default async function CategoriesPage() {
                     <h1 className="text-3xl font-bold tracking-tight">Categorias</h1>
                     <p className="text-muted-foreground">Gerencie as categorias do blog.</p>
                 </div>
-                <Link href="/admin/categories/new">
-                    <Button>
+                <Button asChild>
+                    <Link href="/admin/categories/new">
                         <PlusCircle className="mr-2 h-4 w-4" />
                         Nova Categoria
-                    </Button>
-                </Link>
+                    </Link>
+                </Button>
             </div>
 
             <div className="rounded-md border bg-card">

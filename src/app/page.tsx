@@ -4,6 +4,7 @@ import { ArrowRight, Bot, Zap, BarChart2, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { LatestPostsSection } from "@/components/LatestPostsSection";
+import { RoiCalculator } from "@/components/organisms/RoiCalculator";
 
 export default function HomePage() {
     return (
@@ -23,16 +24,16 @@ export default function HomePage() {
                             Automatize processos, aumente vendas e reduza custos com soluções de IA personalizadas para o seu negócio.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
-                            <Link href="#contact">
-                                <Button size="lg" className="bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white border-0">
+                            <Button size="lg" className="bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white border-0" asChild>
+                                <Link href="#contact">
                                     Começar Agora <ArrowRight className="ml-2 h-4 w-4" />
-                                </Button>
-                            </Link>
-                            <Link href="#contact">
-                                <Button size="lg" variant="outline">
+                                </Link>
+                            </Button>
+                            <Button size="lg" variant="outline" asChild>
+                                <Link href="#contact">
                                     Fale com Especialista
-                                </Button>
-                            </Link>
+                                </Link>
+                            </Button>
                         </div>
                     </div>
                 </div>
@@ -73,41 +74,8 @@ export default function HomePage() {
                 </div>
             </section>
 
-            {/* Social Proof / ROI Section */}
-            <section className="py-20">
-                <div className="container mx-auto px-4 md:px-6">
-                    <div className="grid gap-12 lg:grid-cols-2 items-center">
-                        <div className="space-y-6">
-                            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-                                Resultados Comprovados
-                            </h2>
-                            <p className="text-lg text-muted-foreground">
-                                Nossos clientes experimentam um aumento médio de 40% na produtividade no primeiro mês.
-                            </p>
-                            <ul className="space-y-3">
-                                {[
-                                    "Redução de 60% no tempo de resposta",
-                                    "Aumento de 35% na conversão de leads",
-                                    "Economia de 20h semanais por colaborador",
-                                ].map((item) => (
-                                    <li key={item} className="flex items-center gap-2">
-                                        <CheckCircle2 className="h-5 w-5 text-green-500" />
-                                        <span>{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                            <Button variant="secondary">Ver Casos de Sucesso</Button>
-                        </div>
-                        <div className="relative h-[400px] rounded-xl overflow-hidden bg-gradient-to-tr from-slate-900 to-slate-800 flex items-center justify-center border shadow-2xl">
-                            <div className="text-center space-y-2 p-8">
-                                <div className="text-5xl font-bold text-white mb-2">350+</div>
-                                <div className="text-slate-300">Empresas Transformadas</div>
-                                <div className="h-1 w-24 bg-primary mx-auto mt-4 rounded-full" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            {/* Interactive ROI Calculator Section */}
+            <RoiCalculator />
 
             {/* Testimonials Section */}
             <TestimonialsSection />

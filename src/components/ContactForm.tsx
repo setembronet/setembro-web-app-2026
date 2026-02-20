@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -10,12 +11,24 @@ import { toast } from "sonner";
 
 export function ContactForm({ category = "General" }: { category?: string }) {
     // const t = useTranslations("HomePage"); // Removed
+    const searchParams = useSearchParams();
     const [pending, setPending] = useState(false);
     const [sourceUrl, setSourceUrl] = useState("");
+    const [interestCategory, setInterestCategory] = useState(category);
 
     useEffect(() => {
         setSourceUrl(window.location.href);
-    }, []);
+
+        const urlInterest = searchParams ? searchParams.get("interest") : null;
+
+        if (urlInterest === "Ana") {
+            setInterestCategory("Agente Ana - Calculadora de ROI");
+        } else if (urlInterest === "Consultoria") {
+            setInterestCategory("Consultoria - Calculadora de ROI");
+        } else if (urlInterest) {
+            setInterestCategory(urlInterest);
+        }
+    }, [category, searchParams]);
 
     async function handleSubmit(formData: FormData) {
         setPending(true);
@@ -35,7 +48,7 @@ export function ContactForm({ category = "General" }: { category?: string }) {
 
     return (
         <form action={handleSubmit} className="space-y-4">
-            <input type="hidden" name="interest_category" value={category} />
+            <input type="hidden" name="interest_category" value={interestCategory} />
             <input type="hidden" name="source_url" value={sourceUrl} suppressHydrationWarning />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
