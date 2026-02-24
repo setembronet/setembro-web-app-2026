@@ -1,0 +1,18 @@
+
+> site_setembro@0.1.0 dev
+> next dev --webpack
+
+▲ Next.js 16.1.6 (webpack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.3:3000
+- Environments: .env.local
+
+✓ Starting...
+Error: EBUSY: resource busy or locked, unlink 'C:\Users\Sergio\Documents\antigravity\setembro.net\site_setembro\.next\dev\server\edge-runtime-webpack.js'
+    at ignore-listed frames {
+  errno: -4082,
+  code: 'EBUSY',
+  syscall: 'unlink',
+  path: 'C:\\Users\\Sergio\\Documents\\antigravity\\setembro.net\\site_setembro\\.next\\dev\\server\\edge-runtime-webpack.js'
+}
+[?25h

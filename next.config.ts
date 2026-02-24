@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 // import createNextIntlPlugin from 'next-intl/plugin'; // Removed
 
 const nextConfig: NextConfig = {
+  distDir: 'build',
   images: {
     remotePatterns: [
       {

@@ -6,7 +6,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://setembro.net";
 
     const blogEntries: MetadataRoute.Sitemap = posts.map((post) => ({
-        url: `${baseUrl}/blog/${post.category?.slug || 'geral'}/${post.slug}`,
+        url: `${baseUrl}/blog/${post.category?.[0]?.slug || 'geral'}/${post.slug}`,
         lastModified: new Date(post.published_at || new Date()),
         changeFrequency: 'weekly',
         priority: 0.7,

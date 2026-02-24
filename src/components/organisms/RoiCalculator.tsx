@@ -10,11 +10,20 @@ import Link from "next/link";
 export function RoiCalculator() {
     const [teamSize, setTeamSize] = useState([5]);
     const [hoursPerWeek, setHoursPerWeek] = useState([20]);
-    const [hourlyRate, setHourlyRate] = useState([50]); // R$ por hora médio
+    const [monthlySalary, setMonthlySalary] = useState([5000]); // Salário Bruto Mensal Médio
 
-    // Cálculo simplificado de ROI (Economia Anual com Automação de IA de 60%)
-    const weeklyCost = teamSize[0] * hoursPerWeek[0] * hourlyRate[0];
+    // Cálculo de ROI B2B com Encargos Trabalhistas
+    const ENCARGOS_MULTIPLIER = 1.8;
+    const WORK_HOURS_PER_MONTH = 176;
+
+    const realMonthlyCostPerPerson = monthlySalary[0] * ENCARGOS_MULTIPLIER;
+    const hourlyCost = realMonthlyCostPerPerson / WORK_HOURS_PER_MONTH;
+
+    const weeklyCost = teamSize[0] * hoursPerWeek[0] * hourlyCost;
     const annualCost = weeklyCost * 52;
+    const monthlyWastedCost = annualCost / 12;
+    const daysLostPerYear = (teamSize[0] * hoursPerWeek[0] * 52) / 8;
+
     const aiSavings = annualCost * 0.6; // 60% de tempo salvo
 
     const showHighROI = aiSavings >= 50000; // Gatilho LPO para Agente Ana
@@ -74,15 +83,18 @@ export function RoiCalculator() {
                             <div className="space-y-4">
                                 <div className="flex justify-between items-center">
                                     <label className="text-sm font-medium flex items-center gap-2">
-                                        <TrendingUp className="w-4 h-4 text-primary" /> Custo Hora Médio (R$)
+                                        <TrendingUp className="w-4 h-4 text-primary" /> Salário Bruto Mensal Médio (R$)
                                     </label>
-                                    <span className="font-bold">R$ {hourlyRate[0]}</span>
+                                    <span className="font-bold">R$ {monthlySalary[0].toLocaleString('pt-BR')}</span>
                                 </div>
                                 <Slider
-                                    min={10} max={200} step={5}
-                                    value={hourlyRate}
-                                    onValueChange={setHourlyRate}
+                                    min={3000} max={20000} step={500}
+                                    value={monthlySalary}
+                                    onValueChange={setMonthlySalary}
                                 />
+                                <p className="text-xs text-muted-foreground italic">
+                                    *Já calculamos ~80% de encargos e provisões sobre o salário bruto.
+                                </p>
                             </div>
                         </CardContent>
                     </Card>
@@ -99,12 +111,16 @@ export function RoiCalculator() {
                         <CardContent className="space-y-6 relative z-10">
                             <div>
                                 <p className="text-sm text-primary-foreground/80 mb-1">Custo Anual Atual (Desperdiçado)</p>
-                                <p className="text-2xl font-light">R$ {annualCost.toLocaleString('pt-BR')}</p>
+                                <p className="text-2xl font-light">R$ {annualCost.toLocaleString('pt-BR', { maximumFractionDigits: 0 })}</p>
+                                <div className="mt-3 text-primary-foreground/90 text-sm bg-black/10 p-3 rounded-md border border-white/10">
+                                    <p>Sua empresa está perdendo <strong>R$ {monthlyWastedCost.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} por mês</strong> agora.</p>
+                                    <p className="mt-1">Isso equivale a <strong>{Math.round(daysLostPerYear).toLocaleString('pt-BR')} dias de trabalho</strong> jogados fora por ano.</p>
+                                </div>
                             </div>
                             <div className="pt-4 border-t border-primary-foreground/20">
                                 <p className="text-sm font-medium text-primary-foreground mb-1">Economia Projetada c/ IA (Ano)</p>
                                 <p className="text-5xl font-extrabold tracking-tighter text-white">
-                                    R$ {aiSavings.toLocaleString('pt-BR')}
+                                    R$ {aiSavings.toLocaleString('pt-BR', { maximumFractionDigits: 0 })}
                                 </p>
                             </div>
 
@@ -119,7 +135,7 @@ export function RoiCalculator() {
                                     </p>
                                     <Button size="sm" className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white" asChild>
                                         <Link href="?interest=Ana#contact">
-                                            Falar com Ana Agora <ArrowRight className="w-4 h-4 ml-2" />
+                                            Recuperar meus R$ {aiSavings.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} agora <ArrowRight className="w-4 h-4 ml-2" />
                                         </Link>
                                     </Button>
                                 </div>
