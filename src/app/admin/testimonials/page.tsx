@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -31,11 +31,7 @@ export default function TestimonialsPage() {
     const [loading, setLoading] = useState(true);
     const supabase = createClient();
 
-    useEffect(() => {
-        fetchTestimonials();
-    }, []);
-
-    const fetchTestimonials = async () => {
+    const fetchTestimonials = useCallback(async () => {
         setLoading(true);
         const { data, error } = await supabase
             .from("testimonials")
@@ -49,7 +45,11 @@ export default function TestimonialsPage() {
             setTestimonials(data || []);
         }
         setLoading(false);
-    };
+    }, [supabase]);
+
+    useEffect(() => {
+        fetchTestimonials();
+    }, [fetchTestimonials]);
 
     const handleDelete = async (id: string) => {
         if (!confirm("Tem certeza que deseja excluir este depoimento?")) return;

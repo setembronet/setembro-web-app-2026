@@ -1,0 +1,20 @@
+{
+  "node": {
+    "60f070d1500ba58e880e29ff549cefa08c8f7f5a8f": {
+      "workers": {
+        "app/admin/dashboard/page": {
+          "moduleId": 82554,
+          "async": false,
+          "exportedName": "searchPosts",
+          "filename": "src/actions/search-posts.ts"
+        }
+      },
+      "layer": {
+        "app/admin/dashboard/page": "action-browser"
+      },
+      "exportedName": "searchPosts",
+      "filename": "src/actions/search-posts.ts"
+    }
+  },
+  "edge": {}
+}

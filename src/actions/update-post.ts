@@ -3,6 +3,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { generateEmbedding } from "@/lib/ai/gemini";
 
 export async function updatePost(prevState: any, formData: FormData) {
     console.log("Updating post...");
@@ -59,9 +60,19 @@ export async function updatePost(prevState: any, formData: FormData) {
         delete (rawData as any).category_id; // Don't update if empty
     }
 
+    // --- Início Integração IA (Julia) ---
+    const textToEmbed = `${title}\n${rawData.excerpt}\n${content}`;
+    const embedding = await generateEmbedding(textToEmbed);
+
+    const finalData = {
+        ...rawData,
+        ...(embedding ? { embedding } : {})
+    };
+    // --- Fim Integração IA ---
+
     const { error } = await supabase
         .from('blog_posts')
-        .update(rawData)
+        .update(finalData)
         .eq('id', id);
 
     if (error) {

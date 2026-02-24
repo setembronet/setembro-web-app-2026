@@ -1,0 +1,3 @@
+module.exports=[42860,a=>{"use strict";var b=a.i(7997);function c({children:a}){return(0,b.jsx)(b.Fragment,{children:a})}a.s(["default",()=>c,"metadata",0,{title:"AI Hub | Setembro.net",description:"Converse com nossos agentes especializados em IA para transformar seu negócio.",openGraph:{title:"AI Hub | Setembro.net",description:"Converse com nossos agentes especializados em IA para transformar seu negócio.",url:"https://setembro.net/ai-hub"}}])}];
+
+//# sourceMappingURL=src_app_ai-hub_layout_tsx_635639bc._.js.map

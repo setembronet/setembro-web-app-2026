@@ -1,0 +1,129 @@
+﻿
+> site_setembro@0.1.0 build
+> next build --webpack
+
+Ôû▓ Next.js 16.1.6 (webpack)
+- Environments: .env.local
+
+node.exe : ÔÜá The "middleware" 
+file convention is deprecated. 
+Please use "proxy" instead. Learn 
+more: https://nextjs.org/docs/mess
+ages/middleware-to-proxy
+No linha:1 caractere:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~
+    + CategoryInfo          : Not 
+   Specified: (ÔÜá The "middle..  
+  .leware-to-proxy:String) [],    
+ RemoteException
+    + FullyQualifiedErrorId : Nat 
+   iveCommandError
+ 
+  Creating an optimized production build ...
+<w> [webpack.cache.PackFileCacheSt
+rategy] Caching failed for pack: 
+Error: EPERM: operation not 
+permitted, rename 'C:\Users\Sergio
+\Documents\antigravity\setembro.ne
+t\site_setembro\build\cache\webpac
+k\server-production\0.pack_' -> 'C
+:\Users\Sergio\Documents\antigravi
+ty\setembro.net\site_setembro\buil
+d\cache\webpack\server-production\
+0.pack'
+(node:16236) 
+[MODULE_TYPELESS_PACKAGE_JSON] 
+Warning: Module type of file:///C:
+/Users/Sergio/Documents/antigravit
+y/setembro.net/site_setembro/tailw
+ind.config.ts?id=1771934553636 is 
+not specified and it doesn't 
+parse as CommonJS.
+Reparsing as ES module because 
+module syntax was detected. This 
+incurs a performance overhead.
+To eliminate this warning, add 
+"type": "module" to C:\Users\Sergi
+o\Documents\antigravity\setembro.n
+et\site_setembro\package.json.
+(Use `node --trace-warnings ...` 
+to show where the warning was 
+created)
+Ô£ô Compiled successfully in 20.0s
+  Running TypeScript ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/37) ...
+The width(-1) and height(-1) of 
+chart should be greater than 0,
+       please check the style of 
+container, or the props 
+width(100%) and height(100%),
+       or add a minWidth(0) or 
+minHeight(undefined) or use 
+aspect(undefined) to control the
+       height and width.
+Ô¿» useSearchParams() should be 
+wrapped in a suspense boundary at 
+page "/". Read more: https://nextj
+s.org/docs/messages/missing-suspen
+se-with-csr-bailout
+    at Q (C:\Users\Sergio\Document
+s\antigravity\setembro.net\site_se
+tembro\build\server\chunks\7471.js
+:2:2111)
+    at o (C:\Users\Sergio\Document
+s\antigravity\setembro.net\site_se
+tembro\build\server\chunks\7471.js
+:11:50306)
+    at m (C:\Users\Sergio\Document
+s\antigravity\setembro.net\site_se
+tembro\build\server\app\page.js:5:
+8390)
+    at an (C:\Users\Sergio\Documen
+ts\antigravity\setembro.net\site_s
+etembro\node_modules\next\dist\com
+piled\next-server\app-page.runtime
+.prod.js:2:84360)
+    at ai (C:\Users\Sergio\Documen
+ts\antigravity\setembro.net\site_s
+etembro\node_modules\next\dist\com
+piled\next-server\app-page.runtime
+.prod.js:2:86179)
+    at ai (C:\Users\Sergio\Documen
+ts\antigravity\setembro.net\site_s
+etembro\node_modules\next\dist\com
+piled\next-server\app-page.runtime
+.prod.js:2:104708)
+    at al (C:\Users\Sergio\Documen
+ts\antigravity\setembro.net\site_s
+etembro\node_modules\next\dist\com
+piled\next-server\app-page.runtime
+.prod.js:2:107953)
+    at as (C:\Users\Sergio\Documen
+ts\antigravity\setembro.net\site_s
+etembro\node_modules\next\dist\com
+piled\next-server\app-page.runtime
+.prod.js:2:105368)
+    at am (C:\Users\Sergio\Documen
+ts\antigravity\setembro.net\site_s
+etembro\node_modules\next\dist\com
+piled\next-server\app-page.runtime
+.prod.js:2:112882)
+    at ai (C:\Users\Sergio\Documen
+ts\antigravity\setembro.net\site_s
+etembro\node_modules\next\dist\com
+piled\next-server\app-page.runtime
+.prod.js:2:98808)
+Error occurred prerendering page 
+"/". Read more: https://nextjs.org
+/docs/messages/prerender-error
+Export encountered an error on 
+/page: /, exiting the build.
+Ô¿» Next.js build worker exited 
+with code: 1 and signal: null

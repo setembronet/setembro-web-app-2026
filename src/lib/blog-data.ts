@@ -47,7 +47,7 @@ export async function getPostsByCategory(categorySlug: string) {
 
     // Primeiro pegar a categoria para ter o ID (ou fazer join)
     // Vamos fazer join direto
-    let { data: posts } = await supabase
+    const { data: posts } = await supabase
         .from("blog_posts")
         .select(`
             *,

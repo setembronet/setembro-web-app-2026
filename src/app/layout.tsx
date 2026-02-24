@@ -3,7 +3,7 @@ import './globals.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { Toaster } from 'sonner';
 import { Navbar } from '@/components/Navbar';
-
+import { FloatingConcierge } from '@/components/FloatingConcierge';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-heading' });
 
@@ -26,6 +26,7 @@ export default function RootLayout({
                         <main className="flex-1 pt-14">
                             {children}
                         </main>
+                        <FloatingConcierge />
                     </div>
                     <Toaster />
                 </ThemeProvider>

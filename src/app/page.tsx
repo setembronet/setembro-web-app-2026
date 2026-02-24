@@ -5,39 +5,12 @@ import Link from "next/link";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { LatestPostsSection } from "@/components/LatestPostsSection";
 import { RoiCalculator } from "@/components/organisms/RoiCalculator";
+import { HeroSearch } from "@/components/HeroSearch";
 
 export default function HomePage() {
     return (
         <div className="flex flex-col min-h-screen">
-            {/* Hero Section */}
-            <section className="relative py-20 md:py-32 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background z-0" />
-                <div className="container relative z-10 mx-auto px-4 md:px-6">
-                    <div className="flex flex-col items-center text-center space-y-8">
-                        <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground hover:bg-primary/80">
-                            Novidade: Dashboard Completo de Agentes IA
-                        </div>
-                        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground max-w-4xl">
-                            Transforme sua Empresa com Inteligência Artificial
-                        </h1>
-                        <p className="text-xl text-muted-foreground max-w-2xl">
-                            Automatize processos, aumente vendas e reduza custos com soluções de IA personalizadas para o seu negócio.
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <Button size="lg" className="bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white border-0" asChild>
-                                <Link href="#contact">
-                                    Começar Agora <ArrowRight className="ml-2 h-4 w-4" />
-                                </Link>
-                            </Button>
-                            <Button size="lg" variant="outline" asChild>
-                                <Link href="#contact">
-                                    Fale com Especialista
-                                </Link>
-                            </Button>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <HeroSearch />
 
             {/* Features Section */}
             <section className="py-20 bg-muted/30">

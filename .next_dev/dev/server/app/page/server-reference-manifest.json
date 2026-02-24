@@ -1,0 +1,35 @@
+{
+  "node": {
+    "6001eda03d383734b42166c9fafa36b61d552e9557": {
+      "workers": {
+        "app/page": {
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/submit-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "searchPosts",
+          "filename": "src/actions/search-posts.ts"
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "exportedName": "searchPosts",
+      "filename": "src/actions/search-posts.ts"
+    },
+    "401ff79b06a904a6a352e45acee29e6aa0f045c37e": {
+      "workers": {
+        "app/page": {
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/submit-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "submitLead",
+          "filename": "src/actions/submit-lead.ts"
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "exportedName": "submitLead",
+      "filename": "src/actions/submit-lead.ts"
+    }
+  },
+  "edge": {}
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,6 +11,14 @@ import { toast } from "sonner";
 // import { useTranslations } from "next-intl"; // Removed
 
 export function ContactForm({ category = "General" }: { category?: string }) {
+    return (
+        <Suspense fallback={<div className="h-[300px] w-full animate-pulse bg-muted rounded-md" />}>
+            <ContactFormInner category={category} />
+        </Suspense>
+    );
+}
+
+function ContactFormInner({ category = "General" }: { category?: string }) {
     // const t = useTranslations("HomePage"); // Removed
     const searchParams = useSearchParams();
     const [pending, setPending] = useState(false);

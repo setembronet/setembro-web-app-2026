@@ -60,22 +60,22 @@ export default function AgentsPage() {
     const [editingAgent, setEditingAgent] = useState<Agent | null>(null);
     const [saving, setSaving] = useState(false);
 
-    const fetchAgents = async () => {
-        const supabase = createClient();
-        const { data } = await supabase.from("ai_agents").select("*").order("name");
-
-        // Mocking Notion Sync Status for now since it's not in DB schema yet
-        const mockedData = data?.map(agent => ({
-            ...agent,
-            system_prompt: agent.system_prompt || agent.active_prompt || DEFAULT_PROMPTS[agent.capabilities || agent.role || ''] || "",
-            notion_sync_status: Math.random() > 0.8 ? "error" : "success",
-            last_error: "Tempo de conexão esgotado ao buscar páginas do Notion."
-        }));
-
-        if (mockedData) setAgents(mockedData as unknown as Agent[]);
-    };
-
     useEffect(() => {
+        const fetchAgents = async () => {
+            const supabase = createClient();
+            const { data } = await supabase.from("ai_agents").select("*").order("name");
+
+            // Mocking Notion Sync Status for now since it's not in DB schema yet
+            const mockedData = data?.map(agent => ({
+                ...agent,
+                system_prompt: agent.system_prompt || agent.active_prompt || DEFAULT_PROMPTS[agent.capabilities || agent.role || ''] || "",
+                notion_sync_status: Math.random() > 0.8 ? "error" : "success",
+                last_error: "Tempo de conexão esgotado ao buscar páginas do Notion."
+            }));
+
+            if (mockedData) setAgents(mockedData as unknown as Agent[]);
+        };
+
         fetchAgents();
     }, []);
 

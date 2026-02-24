@@ -1,0 +1,101 @@
+﻿
+> site_setembro@0.1.0 build
+> next build --webpack
+
+Ôû▓ Next.js 16.1.6 (webpack)
+- Environments: .env.local
+
+node.exe : ÔÜá The "middleware" 
+file convention is deprecated. 
+Please use "proxy" instead. Learn 
+more: https://nextjs.org/docs/mess
+ages/middleware-to-proxy
+No linha:1 caractere:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~
+    + CategoryInfo          : Not 
+   Specified: (ÔÜá The "middle..  
+  .leware-to-proxy:String) [],    
+ RemoteException
+    + FullyQualifiedErrorId : Nat 
+   iveCommandError
+ 
+  Creating an optimized production build ...
+Failed to compile.
+
+HookWebpackError: EBUSY: resource 
+busy or locked, open 'C:\Users\Ser
+gio\Documents\antigravity\setembro
+.net\site_setembro\build\server\ap
+p-paths-manifest.json'
+    at makeWebpackError (C:\Users\
+Sergio\Documents\antigravity\setem
+bro.net\site_setembro\node_modules
+\next\dist\compiled\webpack\bundle
+5.js:29:315780)
+    at C:\Users\Sergio\Documents\a
+ntigravity\setembro.net\site_setem
+bro\node_modules\next\dist\compile
+d\webpack\bundle5.js:29:106475
+    at eval (eval at create (C:\Us
+ers\Sergio\Documents\antigravity\s
+etembro.net\site_setembro\node_mod
+ules\next\dist\compiled\webpack\bu
+ndle5.js:14:9224), 
+<anonymous>:106:1)
+-- inner error --
+Error: EBUSY: resource busy or 
+locked, open 'C:\Users\Sergio\Docu
+ments\antigravity\setembro.net\sit
+e_setembro\build\server\app-paths-
+manifest.json'
+    at async open 
+(node:internal/fs/promises:637:25)
+    at async Object.writeFile (nod
+e:internal/fs/promises:1239:14)
+    at async writeMergedManifest (
+C:\Users\Sergio\Documents\antigrav
+ity\setembro.net\site_setembro\nod
+e_modules\next\dist\build\webpack\
+plugins\pages-manifest-plugin.js:1
+03:13)
+    at async 
+PagesManifestPlugin.createAssets (
+C:\Users\Sergio\Documents\antigrav
+ity\setembro.net\site_setembro\nod
+e_modules\next\dist\build\webpack\
+plugins\pages-manifest-plugin.js:1
+24:17)
+caused by plugins in 
+Compilation.hooks.processAssets
+Error: EBUSY: resource busy or 
+locked, open 'C:\Users\Sergio\Docu
+ments\antigravity\setembro.net\sit
+e_setembro\build\server\app-paths-
+manifest.json'
+    at async open 
+(node:internal/fs/promises:637:25)
+    at async Object.writeFile (nod
+e:internal/fs/promises:1239:14)
+    at async writeMergedManifest (
+C:\Users\Sergio\Documents\antigrav
+ity\setembro.net\site_setembro\nod
+e_modules\next\dist\build\webpack\
+plugins\pages-manifest-plugin.js:1
+03:13)
+    at async 
+PagesManifestPlugin.createAssets (
+C:\Users\Sergio\Documents\antigrav
+ity\setembro.net\site_setembro\nod
+e_modules\next\dist\build\webpack\
+plugins\pages-manifest-plugin.js:1
+24:17)
+
+
+> Build failed because of webpack 
+errors

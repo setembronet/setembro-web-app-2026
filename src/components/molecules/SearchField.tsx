@@ -3,6 +3,7 @@
 import { Search } from "lucide-react";
 import { Input } from "@/components/atoms/Input";
 import { Button } from "@/components/atoms/Button";
+import { Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 
@@ -11,6 +12,14 @@ interface SearchFieldProps {
 }
 
 export function SearchField({ placeholder = "Buscar..." }: SearchFieldProps) {
+    return (
+        <Suspense fallback={<div className="h-10 w-full max-w-sm animate-pulse bg-muted rounded-md" />}>
+            <SearchFieldInner placeholder={placeholder} />
+        </Suspense>
+    );
+}
+
+function SearchFieldInner({ placeholder = "Buscar..." }: SearchFieldProps) {
     const searchParams = useSearchParams();
     const { replace } = useRouter();
 

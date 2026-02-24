@@ -3,6 +3,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { generateEmbedding } from "@/lib/ai/gemini";
 
 export async function createPost(prevState: any, formData: FormData) {
     const supabase = await createClient();
@@ -50,9 +51,20 @@ export async function createPost(prevState: any, formData: FormData) {
         faq_items: JSON.parse(formData.get('faq_items') as string || '[]'),
     };
 
+    // --- Início Integração IA (Julia) ---
+    // Gerar embedding semântico para a Busca Híbrida combinando título, resumo e conteúdo
+    const textToEmbed = `${title}\n${rawData.excerpt}\n${content}`;
+    const embedding = await generateEmbedding(textToEmbed);
+
+    const finalData = {
+        ...rawData,
+        ...(embedding ? { embedding } : {}) // Adiciona o campo embedding se a IA responder
+    };
+    // --- Fim Integração IA ---
+
     const { error } = await supabase
         .from('blog_posts')
-        .insert(rawData);
+        .insert(finalData);
 
     if (error) {
         // If unique violation on slug, try appending random suffix

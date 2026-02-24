@@ -1,0 +1,50 @@
+{
+  "node": {
+    "60f070d1500ba58e880e29ff549cefa08c8f7f5a8f": {
+      "workers": {
+        "app/admin/posts/[id]/page": {
+          "moduleId": 79112,
+          "async": false,
+          "exportedName": "searchPosts",
+          "filename": "src/actions/search-posts.ts"
+        }
+      },
+      "layer": {
+        "app/admin/posts/[id]/page": "action-browser"
+      },
+      "exportedName": "searchPosts",
+      "filename": "src/actions/search-posts.ts"
+    },
+    "60938baa67ce3a2f924fcd83a5533974574049ba70": {
+      "workers": {
+        "app/admin/posts/[id]/page": {
+          "moduleId": 79112,
+          "async": false,
+          "exportedName": "createPost",
+          "filename": "src/actions/create-post.ts"
+        }
+      },
+      "layer": {
+        "app/admin/posts/[id]/page": "action-browser"
+      },
+      "exportedName": "createPost",
+      "filename": "src/actions/create-post.ts"
+    },
+    "60095a36b455bb297e58a896efc0c4442a97cf9865": {
+      "workers": {
+        "app/admin/posts/[id]/page": {
+          "moduleId": 79112,
+          "async": false,
+          "exportedName": "updatePost",
+          "filename": "src/actions/update-post.ts"
+        }
+      },
+      "layer": {
+        "app/admin/posts/[id]/page": "action-browser"
+      },
+      "exportedName": "updatePost",
+      "filename": "src/actions/update-post.ts"
+    }
+  },
+  "edge": {}
+}

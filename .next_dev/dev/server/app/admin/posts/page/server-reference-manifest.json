@@ -1,0 +1,20 @@
+{
+  "node": {
+    "6001eda03d383734b42166c9fafa36b61d552e9557": {
+      "workers": {
+        "app/admin/posts/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/posts/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "searchPosts",
+          "filename": "src/actions/search-posts.ts"
+        }
+      },
+      "layer": {
+        "app/admin/posts/page": "action-browser"
+      },
+      "exportedName": "searchPosts",
+      "filename": "src/actions/search-posts.ts"
+    }
+  },
+  "edge": {}
+}

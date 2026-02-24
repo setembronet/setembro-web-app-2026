@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,65440,e=>{"use strict";e.s([],2528),e.i(2528);var t=e.i(95187);let c=(0,t.createServerReference)("60095a36b455bb297e58a896efc0c4442a97cf9865",t.callServer,void 0,t.findSourceMapURL,"updatePost");e.s(["updatePost",()=>c],65440)}]);
