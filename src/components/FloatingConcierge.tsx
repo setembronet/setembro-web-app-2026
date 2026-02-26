@@ -1,15 +1,19 @@
 'use client';
 
 import { useState, useEffect, useTransition } from 'react';
+import { usePathname } from 'next/navigation';
 import { Search, Sparkles, X, ChevronUp, ArrowRight, Loader2, MessageCircle } from 'lucide-react';
 import { searchPosts, SearchResult } from '@/actions/search-posts';
+import { fingerprintLead } from '@/actions/fingerprint-lead';
 
 export function FloatingConcierge() {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const [query, setQuery] = useState('');
+    const [initialMessage, setInitialMessage] = useState('Olá! Sou a Ana. Posso entender **conceitos**, **problemas** e o **contexto** do que você precisa. Experimente me contar uma dor do seu negócio em vez de usar palavras-chave isoladas.');
     const [results, setResults] = useState<SearchResult[] | null>(null);
     const [isPending, startTransition] = useTransition();
+    const pathname = usePathname();
 
     // Detect scroll for back to top
     useEffect(() => {
@@ -20,13 +24,19 @@ export function FloatingConcierge() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Listen to custom event from HeroSearch
+    // Listen to custom event from HeroSearch or CTAs
     useEffect(() => {
         const handleOpenConcierge = (e: any) => {
             setIsOpen(true);
             if (e.detail?.query) {
                 setQuery(e.detail.query);
                 performSearch(e.detail.query);
+            }
+            if (e.detail?.initialMessage) {
+                setInitialMessage(e.detail.initialMessage);
+            }
+            if (e.detail?.leadSource) {
+                fingerprintLead(window.location.href, e.detail.leadSource).catch(console.error);
             }
         };
         window.addEventListener('open-concierge', handleOpenConcierge as EventListener);
@@ -58,6 +68,9 @@ export function FloatingConcierge() {
     };
 
     const hasSearchedAndEmpty = results !== null && results.length === 0;
+
+    // Hide concierge completely on specific routes (e.g., custom web development page)
+    if (pathname === '/web/custom') return null;
 
     return (
         <>
@@ -140,8 +153,7 @@ export function FloatingConcierge() {
                                 <h4 className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-4">Ana (Assistente IA)</h4>
                                 <div className="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-4 mb-6 border border-blue-100 dark:border-blue-900/50">
                                     <p className="text-sm text-blue-900 dark:text-blue-100 mb-2 leading-relaxed">
-                                        Olá! Sou a Ana. Posso entender **conceitos**, **problemas** e o **contexto** do que você precisa.
-                                        Experimente me contar uma dor do seu negócio em vez de usar palavras-chave isoladas.
+                                        {initialMessage}
                                     </p>
                                 </div>
 

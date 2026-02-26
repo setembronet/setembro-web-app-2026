@@ -1,9 +1,9 @@
 {
   "node": {
-    "6001eda03d383734b42166c9fafa36b61d552e9557": {
+    "608d584ce20ee4ba2327ff4da8137e68cf7850b920": {
       "workers": {
         "app/admin/settings/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/settings/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "moduleId": "[project]/.next-internal/server/app/admin/settings/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "searchPosts",
           "filename": "src/actions/search-posts.ts"
@@ -14,6 +14,21 @@
       },
       "exportedName": "searchPosts",
       "filename": "src/actions/search-posts.ts"
+    },
+    "60a2d4fd0d7d050c8e7477f3f7041aaa925e64dabe": {
+      "workers": {
+        "app/admin/settings/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/settings/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "fingerprintLead",
+          "filename": "src/actions/fingerprint-lead.ts"
+        }
+      },
+      "layer": {
+        "app/admin/settings/page": "action-browser"
+      },
+      "exportedName": "fingerprintLead",
+      "filename": "src/actions/fingerprint-lead.ts"
     }
   },
   "edge": {}

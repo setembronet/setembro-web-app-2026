@@ -1,75 +1,95 @@
 {
   "node": {
-    "6001eda03d383734b42166c9fafa36b61d552e9557": {
+    "608d584ce20ee4ba2327ff4da8137e68cf7850b920": {
       "workers": {
+        "app/_not-found/page": {
+          "moduleId": "[project]/.next-internal/server/app/_not-found/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "searchPosts",
+          "filename": "src/actions/search-posts.ts"
+        },
+        "app/about/page": {
+          "moduleId": "[project]/.next-internal/server/app/about/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "searchPosts",
+          "filename": "src/actions/search-posts.ts"
+        },
         "app/admin/agents/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/agents/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "moduleId": "[project]/.next-internal/server/app/admin/agents/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "searchPosts",
           "filename": "src/actions/search-posts.ts"
         },
         "app/admin/categories/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/categories/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/app/admin/categories/page.tsx [app-rsc] (ecmascript)\", ACTIONS_MODULE2 => \"[project]/src/app/admin/categories/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "moduleId": "[project]/.next-internal/server/app/admin/categories/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE2 => \"[project]/src/app/admin/categories/page.tsx [app-rsc] (ecmascript)\", ACTIONS_MODULE3 => \"[project]/src/app/admin/categories/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "searchPosts",
           "filename": "src/actions/search-posts.ts"
         },
         "app/admin/dashboard/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/dashboard/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "moduleId": "[project]/.next-internal/server/app/admin/dashboard/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "searchPosts",
           "filename": "src/actions/search-posts.ts"
         },
         "app/admin/leads/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/leads/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "moduleId": "[project]/.next-internal/server/app/admin/leads/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "searchPosts",
           "filename": "src/actions/search-posts.ts"
         },
         "app/admin/posts/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/posts/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "moduleId": "[project]/.next-internal/server/app/admin/posts/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "searchPosts",
           "filename": "src/actions/search-posts.ts"
         },
         "app/admin/settings/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/settings/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "moduleId": "[project]/.next-internal/server/app/admin/settings/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "searchPosts",
           "filename": "src/actions/search-posts.ts"
         },
         "app/admin/testimonials/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/testimonials/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "searchPosts",
-          "filename": "src/actions/search-posts.ts"
-        },
-        "app/blog/[category]/[slug]/page": {
-          "moduleId": "[project]/.next-internal/server/app/blog/[category]/[slug]/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "moduleId": "[project]/.next-internal/server/app/admin/testimonials/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "searchPosts",
           "filename": "src/actions/search-posts.ts"
         },
         "app/blog/page": {
-          "moduleId": "[project]/.next-internal/server/app/blog/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "moduleId": "[project]/.next-internal/server/app/blog/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "searchPosts",
+          "filename": "src/actions/search-posts.ts"
+        },
+        "app/foo/page": {
+          "moduleId": "[project]/.next-internal/server/app/foo/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "searchPosts",
+          "filename": "src/actions/search-posts.ts"
+        },
+        "app/hosting/page": {
+          "moduleId": "[project]/.next-internal/server/app/hosting/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "searchPosts",
           "filename": "src/actions/search-posts.ts"
         },
         "app/login/page": {
-          "moduleId": "[project]/.next-internal/server/app/login/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "moduleId": "[project]/.next-internal/server/app/login/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "searchPosts",
           "filename": "src/actions/search-posts.ts"
         },
         "app/page": {
-          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/submit-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE2 => \"[project]/src/actions/submit-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "searchPosts",
           "filename": "src/actions/search-posts.ts"
         }
       },
       "layer": {
+        "app/_not-found/page": "action-browser",
+        "app/about/page": "action-browser",
         "app/admin/agents/page": "action-browser",
         "app/admin/categories/page": "action-browser",
         "app/admin/dashboard/page": "action-browser",
@@ -77,18 +97,125 @@
         "app/admin/posts/page": "action-browser",
         "app/admin/settings/page": "action-browser",
         "app/admin/testimonials/page": "action-browser",
-        "app/blog/[category]/[slug]/page": "action-browser",
         "app/blog/page": "action-browser",
+        "app/foo/page": "action-browser",
+        "app/hosting/page": "action-browser",
         "app/login/page": "action-browser",
         "app/page": "action-browser"
       },
       "filename": "src/actions/search-posts.ts",
       "exportedName": "searchPosts"
     },
-    "401ff79b06a904a6a352e45acee29e6aa0f045c37e": {
+    "60a2d4fd0d7d050c8e7477f3f7041aaa925e64dabe": {
+      "workers": {
+        "app/_not-found/page": {
+          "moduleId": "[project]/.next-internal/server/app/_not-found/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "fingerprintLead",
+          "filename": "src/actions/fingerprint-lead.ts"
+        },
+        "app/about/page": {
+          "moduleId": "[project]/.next-internal/server/app/about/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "fingerprintLead",
+          "filename": "src/actions/fingerprint-lead.ts"
+        },
+        "app/admin/agents/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/agents/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "fingerprintLead",
+          "filename": "src/actions/fingerprint-lead.ts"
+        },
+        "app/admin/categories/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/categories/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE2 => \"[project]/src/app/admin/categories/page.tsx [app-rsc] (ecmascript)\", ACTIONS_MODULE3 => \"[project]/src/app/admin/categories/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "fingerprintLead",
+          "filename": "src/actions/fingerprint-lead.ts"
+        },
+        "app/admin/dashboard/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/dashboard/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "fingerprintLead",
+          "filename": "src/actions/fingerprint-lead.ts"
+        },
+        "app/admin/leads/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/leads/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "fingerprintLead",
+          "filename": "src/actions/fingerprint-lead.ts"
+        },
+        "app/admin/posts/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/posts/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "fingerprintLead",
+          "filename": "src/actions/fingerprint-lead.ts"
+        },
+        "app/admin/settings/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/settings/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "fingerprintLead",
+          "filename": "src/actions/fingerprint-lead.ts"
+        },
+        "app/admin/testimonials/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/testimonials/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "fingerprintLead",
+          "filename": "src/actions/fingerprint-lead.ts"
+        },
+        "app/blog/page": {
+          "moduleId": "[project]/.next-internal/server/app/blog/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "fingerprintLead",
+          "filename": "src/actions/fingerprint-lead.ts"
+        },
+        "app/foo/page": {
+          "moduleId": "[project]/.next-internal/server/app/foo/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "fingerprintLead",
+          "filename": "src/actions/fingerprint-lead.ts"
+        },
+        "app/hosting/page": {
+          "moduleId": "[project]/.next-internal/server/app/hosting/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "fingerprintLead",
+          "filename": "src/actions/fingerprint-lead.ts"
+        },
+        "app/login/page": {
+          "moduleId": "[project]/.next-internal/server/app/login/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "fingerprintLead",
+          "filename": "src/actions/fingerprint-lead.ts"
+        },
+        "app/page": {
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE2 => \"[project]/src/actions/submit-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "fingerprintLead",
+          "filename": "src/actions/fingerprint-lead.ts"
+        }
+      },
+      "layer": {
+        "app/_not-found/page": "action-browser",
+        "app/about/page": "action-browser",
+        "app/admin/agents/page": "action-browser",
+        "app/admin/categories/page": "action-browser",
+        "app/admin/dashboard/page": "action-browser",
+        "app/admin/leads/page": "action-browser",
+        "app/admin/posts/page": "action-browser",
+        "app/admin/settings/page": "action-browser",
+        "app/admin/testimonials/page": "action-browser",
+        "app/blog/page": "action-browser",
+        "app/foo/page": "action-browser",
+        "app/hosting/page": "action-browser",
+        "app/login/page": "action-browser",
+        "app/page": "action-browser"
+      },
+      "filename": "src/actions/fingerprint-lead.ts",
+      "exportedName": "fingerprintLead"
+    },
+    "40d96ee92b5397b03220967fd1ab03f0ef131b6a2e": {
       "workers": {
         "app/page": {
-          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/submit-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE2 => \"[project]/src/actions/submit-lead.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "submitLead",
           "filename": "src/actions/submit-lead.ts"
@@ -100,10 +227,10 @@
       "filename": "src/actions/submit-lead.ts",
       "exportedName": "submitLead"
     },
-    "40d9aa354994903aa271857329b75d8eae47ed2eb6": {
+    "408822b7bac66941c2cd1b9a0e0a717b777201bee3": {
       "workers": {
         "app/admin/categories/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/categories/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/app/admin/categories/page.tsx [app-rsc] (ecmascript)\", ACTIONS_MODULE2 => \"[project]/src/app/admin/categories/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "moduleId": "[project]/.next-internal/server/app/admin/categories/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE2 => \"[project]/src/app/admin/categories/page.tsx [app-rsc] (ecmascript)\", ACTIONS_MODULE3 => \"[project]/src/app/admin/categories/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "$$RSC_SERVER_ACTION_0",
           "filename": "src/app/admin/categories/page.tsx"
@@ -115,10 +242,10 @@
       "filename": "src/app/admin/categories/page.tsx",
       "exportedName": "$$RSC_SERVER_ACTION_0"
     },
-    "4036c84ba34f23d9a6b0f4e7d8651b67a6b8ecd753": {
+    "40446b23cd69622c94fa7812a21e3df987fdf2445e": {
       "workers": {
         "app/admin/categories/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/categories/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/app/admin/categories/page.tsx [app-rsc] (ecmascript)\", ACTIONS_MODULE2 => \"[project]/src/app/admin/categories/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "moduleId": "[project]/.next-internal/server/app/admin/categories/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE2 => \"[project]/src/app/admin/categories/page.tsx [app-rsc] (ecmascript)\", ACTIONS_MODULE3 => \"[project]/src/app/admin/categories/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "deleteCategory",
           "filename": "src/app/admin/categories/actions.ts"
@@ -130,10 +257,10 @@
       "filename": "src/app/admin/categories/actions.ts",
       "exportedName": "deleteCategory"
     },
-    "600b019fec858fef1d1b58feeb27d88c87391ec24a": {
+    "60e94e3d6b0274c22e2fbc22bbeb09b366db7e8751": {
       "workers": {
         "app/admin/categories/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/categories/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/app/admin/categories/page.tsx [app-rsc] (ecmascript)\", ACTIONS_MODULE2 => \"[project]/src/app/admin/categories/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "moduleId": "[project]/.next-internal/server/app/admin/categories/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE2 => \"[project]/src/app/admin/categories/page.tsx [app-rsc] (ecmascript)\", ACTIONS_MODULE3 => \"[project]/src/app/admin/categories/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "createCategory",
           "filename": "src/app/admin/categories/actions.ts"
@@ -145,10 +272,10 @@
       "filename": "src/app/admin/categories/actions.ts",
       "exportedName": "createCategory"
     },
-    "708827be12ebf1fc0288d8ece1c4ee73c0c2f1067d": {
+    "70a6f358fcae3bcf48ae7d2c718e42f7d8f9ee78d4": {
       "workers": {
         "app/admin/categories/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/categories/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/app/admin/categories/page.tsx [app-rsc] (ecmascript)\", ACTIONS_MODULE2 => \"[project]/src/app/admin/categories/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "moduleId": "[project]/.next-internal/server/app/admin/categories/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/actions/search-posts.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/src/actions/fingerprint-lead.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE2 => \"[project]/src/app/admin/categories/page.tsx [app-rsc] (ecmascript)\", ACTIONS_MODULE3 => \"[project]/src/app/admin/categories/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "updateCategory",
           "filename": "src/app/admin/categories/actions.ts"
@@ -162,5 +289,5 @@
     }
   },
   "edge": {},
-  "encryptionKey": "eoCfJccAKZvog6g5+3bxzO1JBi6jkpOCDOmby4xgX9o="
+  "encryptionKey": "6qRUBHTjvIlw1xvG+yqD6A5jKlhUKR5ZCJZShSqjCr0="
 }

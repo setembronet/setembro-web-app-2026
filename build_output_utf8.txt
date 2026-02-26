@@ -1,0 +1,34 @@
+﻿
+> site_setembro@0.1.0 build
+> next build
+
+node.exe : 
+No linha:1 caractere:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~
+    + CategoryInfo          : Not 
+   Specified: (:String) [], Remo  
+  teException
+    + FullyQualifiedErrorId : Nat 
+   iveCommandError
+ 
+> Build error occurred
+Error: EBUSY: resource busy or 
+locked, unlink 'C:\Users\Sergio\Do
+cuments\antigravity\setembro.net\s
+ite_setembro\.next_dev\package.jso
+n'
+    at ignore-listed frames {
+  errno: -4082,
+  code: 'EBUSY',
+  syscall: 'unlink',
+  path: 'C:\\Users\\Sergio\\Docume
+nts\\antigravity\\setembro.net\\si
+te_setembro\\.next_dev\\package.js
+on'
+}

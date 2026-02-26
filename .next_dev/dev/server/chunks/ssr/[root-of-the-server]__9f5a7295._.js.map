@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Sergio/Documents/antigravity/setembro.net/site_setembro/src/app/automation/page.tsx"],"sourcesContent":["export default function AutomationPage() {\r\n    return (\r\n        <div className=\"container py-20\">\r\n            <h1 className=\"text-4xl font-bold mb-4\">Automação</h1>\r\n            <p className=\"text-xl text-muted-foreground\">Página em construção.</p>\r\n        </div>\r\n    );\r\n}\r\n"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACpB,qBACI,8OAAC;QAAI,WAAU;;0BACX,8OAAC;gBAAG,WAAU;0BAA0B;;;;;;0BACxC,8OAAC;gBAAE,WAAU;0BAAgC;;;;;;;;;;;;AAGzD"}}]
-}
