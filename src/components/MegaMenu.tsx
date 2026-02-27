@@ -56,16 +56,36 @@ export function MegaMenu() {
                     </NavigationMenuContent>
                 </NavigationMenuItem>
 
-                {/* Systems */}
+                {/* Solutions (Nexus360 Hub) */}
                 <NavigationMenuItem>
-                    <NavigationMenuTrigger className="bg-transparent">Sistemas</NavigationMenuTrigger>
+                    <NavigationMenuTrigger className="bg-transparent">Soluções</NavigationMenuTrigger>
                     <NavigationMenuContent>
-                        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                            <ListItem title="Desenvolvimento Sob Medida" href="/systems/custom">
-                                <Server className="w-4 h-4 mr-2 inline" />Software que se adapta ao seu negócio.
+                        <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[600px] lg:grid-cols-[1fr_.75fr]">
+                            <li className="row-span-3">
+                                <NavigationMenuLink asChild>
+                                    <Link
+                                        className="relative flex h-full w-full select-none flex-col justify-end rounded-md bg-slate-950 p-6 no-underline outline-none focus:shadow-md overflow-hidden group border border-slate-800"
+                                        href="/solucoes/nexus-360"
+                                    >
+                                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.15),transparent_50%)] group-hover:bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.25),transparent_50%)] transition-colors duration-500" />
+                                        <Workflow className="h-6 w-6 text-blue-500 mb-2 relative z-10" />
+                                        <div className="mb-2 mt-2 text-lg font-bold text-white relative z-10 flex items-center gap-2">
+                                            Setembro Nexus360
+                                        </div>
+                                        <p className="text-sm leading-relaxed text-slate-400 relative z-10 font-light">
+                                            Ecossistema 360 definitivo. Inteligência, automação e arquitetura digital no centro estratégico do seu negócio.
+                                        </p>
+                                    </Link>
+                                </NavigationMenuLink>
+                            </li>
+                            <ListItem title="Desenvolvimento Web" href="/">
+                                <Code className="w-4 h-4 mr-2 inline text-slate-400" /> Landing Pages e Layouts
+                            </ListItem>
+                            <ListItem title="Sistemas Sob Medida" href="/systems/custom">
+                                <Server className="w-4 h-4 mr-2 inline text-slate-400" /> ERP, CMMS, CRM e SaaS.
                             </ListItem>
                             <ListItem title="Integração de APIs" href="/systems/api">
-                                <Server className="w-4 h-4 mr-2 inline" />Conecte suas ferramentas sem esforço.
+                                <Workflow className="w-4 h-4 mr-2 inline text-slate-400" /> Conectividade de sistemas.
                             </ListItem>
                         </ul>
                     </NavigationMenuContent>
@@ -102,7 +122,7 @@ export function MegaMenu() {
                 <NavigationMenuItem>
                     <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
                         <Link href="/ai">
-                            Inteligência Artificial
+                            IA
                         </Link>
                     </NavigationMenuLink>
                 </NavigationMenuItem>

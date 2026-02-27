@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { generateEmbedding } from "@/lib/ai/gemini";
+import { syncPostToRAG } from "@/lib/ai/sync-rag";
 
 export async function updatePost(prevState: any, formData: FormData) {
     console.log("Updating post...");
@@ -35,7 +36,9 @@ export async function updatePost(prevState: any, formData: FormData) {
         category_id: formData.get('category_id') as string, // MUST be UUID
         excerpt: formData.get('excerpt') as string,
         content,
+        image: formData.get('image') as string,
         featured_image_alt: formData.get('featured_image_alt') as string,
+        download_pdf_url: formData.get('download_pdf_url') as string,
         // is_published: formData.get('is_published') === 'on', // Deprecated
         status: formData.get('status') as string,
         published_at: formData.get('published_at') as string,
@@ -70,10 +73,24 @@ export async function updatePost(prevState: any, formData: FormData) {
     };
     // --- Fim Integração IA ---
 
-    const { error } = await supabase
+    const { data: updatedPost, error } = await supabase
         .from('blog_posts')
         .update(finalData)
-        .eq('id', id);
+        .eq('id', id)
+        .select()
+        .single();
+
+    if (!error && updatedPost) {
+        // --- Injeta o Artigo no Cérebro da Ana (RAG) ---
+        // A função trata se foi publicado, despublicado (exclui os chunks antigos etc)
+        await syncPostToRAG(
+            updatedPost.id,
+            updatedPost.title,
+            updatedPost.content,
+            updatedPost.slug,
+            updatedPost.status
+        );
+    }
 
     if (error) {
         console.error("Update Error:", error);

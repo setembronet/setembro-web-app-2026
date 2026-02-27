@@ -12,7 +12,7 @@ export async function LatestPostsSection() {
         .from("blog_posts")
         .select(`
             *,
-            category:categories(name, slug),
+            category:categories(name, slug, image),
             author:authors(name, avatar_url)
         `)
         .eq("is_published", true)
@@ -47,11 +47,11 @@ export async function LatestPostsSection() {
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {posts.map((post) => (
                         <Card key={post.id} className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow">
-                            {(post.featured_image || post.cover_image) && (
+                            {(post.image || post.category?.image) && (
                                 <div className="aspect-video w-full overflow-hidden">
                                     {/* eslint-disable-next-line @next/next/no-img-element */}
                                     <img
-                                        src={post.featured_image || post.cover_image}
+                                        src={post.image || post.category?.image}
                                         alt={post.title}
                                         className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
                                     />

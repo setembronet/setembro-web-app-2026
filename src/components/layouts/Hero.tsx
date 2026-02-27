@@ -1,6 +1,22 @@
-import Link from 'next/link';
+"use client";
+
+import { fingerprintLead } from "@/actions/fingerprint-lead";
 
 export function Hero() {
+    const handleConciergeOpen = async () => {
+        try {
+            await fingerprintLead(window.location.href, "layouts-premium: btn_hero_cta");
+        } catch (error) {
+            console.error("Tracking failure:", error);
+        }
+        const event = new CustomEvent("open-concierge", {
+            detail: {
+                message: "Olá! Projetos de layouts premium oferecem o equilíbrio perfeito entre agilidade, design pré-aprovado e excelente custo-benefício. Sou a Ana, orquestradora da Setembro.net. Me conte: qual é o segmento da sua empresa?",
+                context: "layouts-premium"
+            }
+        });
+        window.dispatchEvent(event);
+    };
     return (
         <section className="relative w-full min-h-[75vh] flex items-center justify-center overflow-hidden bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-white pt-24 pb-16">
 
@@ -37,10 +53,8 @@ export function Hero() {
                 </p>
 
                 <div className="pt-8 flex flex-col sm:flex-row gap-6 justify-center w-full animate-fade-in-up" style={{ animationDelay: '200ms' }}>
-                    <Link
-                        href="https://wa.me/5581999999999" // TODO: Update WhatsApp number
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <button
+                        onClick={handleConciergeOpen}
                         className="group relative inline-flex items-center justify-center px-8 py-5 text-sm font-bold tracking-widest uppercase text-white bg-neutral-900 dark:bg-white dark:text-neutral-900 overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98] shadow-2xl"
                     >
                         <span className="absolute inset-0 w-full h-full bg-blue-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out" />
@@ -50,7 +64,7 @@ export function Hero() {
                                 <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                             </svg>
                         </span>
-                    </Link>
+                    </button>
                 </div>
 
             </div>

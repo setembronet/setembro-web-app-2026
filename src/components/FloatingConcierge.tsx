@@ -3,7 +3,8 @@
 import { useState, useEffect, useTransition } from 'react';
 import { usePathname } from 'next/navigation';
 import { Search, Sparkles, X, ChevronUp, ArrowRight, Loader2, MessageCircle } from 'lucide-react';
-import { searchPosts, SearchResult } from '@/actions/search-posts';
+import { searchPosts } from '@/actions/search-posts';
+import type { SearchResult } from '@/actions/search-posts';
 import { fingerprintLead } from '@/actions/fingerprint-lead';
 
 export function FloatingConcierge() {
@@ -180,7 +181,7 @@ export function FloatingConcierge() {
                                 {results.map((item, idx) => (
                                     <a
                                         key={item.id}
-                                        href={`/blog/${item.slug}`}
+                                        href={`/blog/${item.category_slug || 'geral'}/${item.slug}`}
                                         className="group flex flex-col p-4 mx-2 border border-transparent hover:border-slate-200 dark:hover:border-slate-800 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both"
                                         style={{ animationDelay: `${idx * 50}ms` }}
                                     >

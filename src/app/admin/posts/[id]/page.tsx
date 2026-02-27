@@ -18,7 +18,7 @@ export default async function EditPostPage(props: { params: Promise<{ id: string
     }
 
     return (
-        <div className="max-w-2xl mx-auto py-6">
+        <div className="w-full max-w-7xl mx-auto py-6 px-4 md:px-8">
             <h1 className="text-3xl font-bold mb-6">Edit Post</h1>
             <PostForm initialData={post} isEditing categories={categories || []} />
         </div>

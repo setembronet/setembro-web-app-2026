@@ -16,6 +16,7 @@ type CategoryFormProps = {
         name: string;
         slug: string;
         description?: string;
+        image?: string;
     };
 };
 
@@ -80,6 +81,32 @@ export function CategoryForm({ category }: CategoryFormProps) {
                     placeholder="Descrição para SEO e listagens"
                     rows={4}
                 />
+            </div>
+
+            <div className="space-y-2">
+                <Label htmlFor="image">URL da Imagem da Categoria</Label>
+                <Input
+                    id="image"
+                    name="image"
+                    defaultValue={category?.image}
+                    placeholder="https://exemplo.com/imagem.png"
+                />
+                {state.errors?.image && (
+                    <p className="text-sm text-red-500">{state.errors.image.join(", ")}</p>
+                )}
+                {category?.image && (
+                    <div className="mt-2 text-sm text-muted-foreground">
+                        <p className="mb-2">Preview atual:</p>
+                        <div className="aspect-video w-full max-w-sm rounded-md overflow-hidden bg-muted relative border">
+                            <img
+                                src={category.image}
+                                alt="Preview"
+                                className="object-cover w-full h-full"
+                                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+                            />
+                        </div>
+                    </div>
+                )}
             </div>
 
             <div className="flex gap-4">

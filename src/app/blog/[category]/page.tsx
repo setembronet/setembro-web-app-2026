@@ -1,5 +1,5 @@
 import { Navbar } from "@/components/Navbar";
-import { getCategoryBySlug, getPostsByCategory } from "@/lib/blog-data";
+import { getCategoryBySlug, getPostsByCategory, getAllCategories } from "@/lib/blog-data";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -18,6 +18,7 @@ export default async function BlogCategoryPage({ params }: { params: Promise<{ c
         notFound();
     }
 
+    const categories = await getAllCategories();
     const posts = await getPostsByCategory(category);
 
     return (
@@ -30,16 +31,31 @@ export default async function BlogCategoryPage({ params }: { params: Promise<{ c
                     <p className="text-xl text-muted-foreground max-w-2xl">
                         {categoryData.description}
                     </p>
+
+                    {categories && categories.length > 0 && (
+                        <div className="flex flex-wrap justify-center gap-2 mt-6">
+                            <Link href="/blog">
+                                <Badge variant="outline" className="text-sm px-4 py-1.5 cursor-pointer hover:bg-secondary transition-colors">Todos</Badge>
+                            </Link>
+                            {categories.map((cat: any) => (
+                                <Link key={cat.id} href={`/blog/${cat.slug}`}>
+                                    <Badge variant={cat.slug === categoryData.slug ? "default" : "outline"} className="text-sm px-4 py-1.5 cursor-pointer hover:bg-secondary transition-colors">
+                                        {cat.name}
+                                    </Badge>
+                                </Link>
+                            ))}
+                        </div>
+                    )}
                 </div>
 
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {posts && posts.length > 0 ? (
                         posts.map((post) => (
                             <Card key={post.id} className="flex flex-col hover:shadow-lg transition-shadow">
-                                {(post.featured_image || post.cover_image) && (
+                                {(post.image) && (
                                     <div className="aspect-video w-full overflow-hidden rounded-t-xl bg-muted relative">
                                         <Image
-                                            src={post.featured_image || post.cover_image || ""}
+                                            src={post.image || ""}
                                             alt={post.title}
                                             fill
                                             className="object-cover transition-transform hover:scale-105"

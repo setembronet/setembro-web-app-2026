@@ -18,9 +18,11 @@ export default function AdminLayout({
         { href: "/admin", label: "Visão Geral" },
         { href: "/admin/leads", label: "Leads" },
         { href: "/admin/posts", label: "Artigos" },
+        { href: "/admin/pautas", label: "Pautas (IA)" },
         { href: "/admin/categories", label: "Categorias" },
         { href: "/admin/testimonials", label: "Depoimentos" },
         { href: "/admin/agents", label: "Agentes" },
+        { href: "/admin/rag", label: "Memória IA (RAG)" },
         { href: "/admin/settings", label: "Configurações" },
     ];
 

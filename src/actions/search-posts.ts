@@ -8,9 +8,10 @@ export type SearchResult = {
     title: string;
     slug: string;
     excerpt: string;
-    featured_image: string;
+    image: string;
     published_at: string;
     category_id: string;
+    category_slug: string;
     semantic_similarity: number;
     keyword_score: number;
 };
@@ -26,7 +27,7 @@ export async function searchPosts(query: string, limit: number = 5): Promise<Sea
     // Fallback: If AI fails or doesn't return vector, use zero-vector to run keyword-only search
     const vectorStr = queryEmbedding
         ? `[${queryEmbedding.join(',')}]`
-        : `[${new Array(768).fill(0).join(',')}]`;
+        : `[${new Array(3072).fill(0).join(',')}]`;
 
     // 2. Call the hybrid search RPC function we created in Supabase
     const { data, error } = await supabase.rpc('search_posts_hybrid', {

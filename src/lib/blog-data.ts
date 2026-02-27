@@ -13,11 +13,10 @@ export type BlogPost = {
     slug: string;
     excerpt?: string;
     content?: string;
-    cover_image?: string;
-    featured_image?: string;
+    image?: string;
     published_at: string;
     reading_time?: number;
-    category?: BlogCategory;
+    category?: BlogCategory & { image?: string };
     author?: {
         name: string;
         avatar_url?: string;
@@ -51,7 +50,7 @@ export async function getPostsByCategory(categorySlug: string) {
         .from("blog_posts")
         .select(`
             *,
-            category:categories(name, slug),
+            category:categories(name, slug, image),
             author:authors(name, avatar_url)
         `)
         .eq("status", "published")
@@ -72,7 +71,7 @@ export async function getPost(slug: string) {
         .from("blog_posts")
         .select(`
             *,
-            category:categories(name, slug),
+            category:categories(name, slug, image),
             author:authors(name, avatar_url, bio)
         `)
         .eq("slug", slug)

@@ -8,7 +8,7 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { PlusCircle, Edit, Trash } from "lucide-react";
+import { PlusCircle, Edit, Trash, BarChart2 } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 
@@ -80,6 +80,11 @@ export default async function PostsPage() {
                                     </TableCell>
                                     <TableCell className="text-right">
                                         <div className="flex justify-end gap-2">
+                                            <Link href={`/admin/posts/analytics/${post.id}`}>
+                                                <Button size="icon" variant="ghost" className="text-blue-500 hover:text-blue-700 hover:bg-blue-50">
+                                                    <BarChart2 className="h-4 w-4" />
+                                                </Button>
+                                            </Link>
                                             <Link href={`/admin/posts/${post.id}`}>
                                                 <Button size="icon" variant="ghost">
                                                     <Edit className="h-4 w-4" />

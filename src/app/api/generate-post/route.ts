@@ -23,12 +23,13 @@ export async function POST(req: Request) {
 Escreva um rascunho de artigo de blog em formato HTML (adequado para um editor Rich Text/TipTap).
 O tópico do artigo é: "${topic}".
 
-Diretrizes:
+Diretrizes Rigorosas (SEO E-E-A-T):
+- O texto DEVE possuir profundidade. É EXTREMAMENTE PROIBIDO retornar sumários curtos. Você DEVE gerar, no mínimo, 1.000 palavras abrangendo métricas, exemplos práticos e desdobramentos lógicos.
 - Retorne apenas o HTML puro do conteúdo. Não envolva em blocos \`\`\`html ou markdown.
-- Use tags estruturadas (<h2>, <h3>, <p>, <ul>, <li>, <strong>).
-- Formate a introdução para ser atrativa e direta.
-- Divida o texto em seções lógicas com subtítulos.
-- Mantenha o formato Clean-Corporate da Setembro.net, ou seja, persuasivo mas profissional, focado em ROI e soluções de negócios.`;
+- Use tags estruturadas abundantemente (<h2>, <h3>, <p>, <ul>, <li>, <strong>, <blockquote>).
+- Formate a introdução focando na intenção de busca do usuário (Search Intent).
+- Mantenha o formato Clean-Corporate B2B da Setembro.net: tom persuasivo, linguagem técnica acessível e focado em ROI (Retorno sobre Investimento).
+- Não crie o <h1>, pois o sistema usará o título fornecido. Comece pelo conteúdo (ou seja, seu maior cabeçalho na hierarquia deve ser <h2>).`;
 
         let cleanedHtml = "";
 

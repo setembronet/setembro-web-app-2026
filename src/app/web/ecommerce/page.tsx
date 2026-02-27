@@ -2,6 +2,7 @@ import { Hero } from "@/components/ecommerce/Hero";
 import { GestaoSimplificada } from "@/components/ecommerce/GestaoSimplificada";
 import { Seguranca } from "@/components/ecommerce/Seguranca";
 import { Recursos } from "@/components/ecommerce/Recursos";
+import { EcommerceCTA } from "@/components/ecommerce/EcommerceCTA";
 
 export const metadata = {
     title: "Lojas Virtuais de Alta Performance | Setembro.net",
@@ -28,14 +29,7 @@ export default function EcommercePage() {
                 <p className="text-xl md:text-2xl text-blue-100 mb-10 max-w-2xl font-medium">
                     Fale com nossos especialistas e descubra como podemos estruturar o seu e-commerce para decolar em 2026.
                 </p>
-                <a
-                    href="https://wa.me/5581999999999" // TODO: Update with real WhatsApp number
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-neutral-900 text-white font-bold text-lg px-10 py-5 uppercase tracking-widest hover:bg-neutral-800 transition-colors shadow-2xl"
-                >
-                    Iniciar Projeto
-                </a>
+                <EcommerceCTA />
             </section>
         </main>
     );

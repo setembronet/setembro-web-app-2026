@@ -282,13 +282,12 @@ export function RichTextEditor({
         immediatelyRender: false,
     });
 
-    // Sync value change if specificed externally (e.g. form reset)
+    // Sync value change if specificed externally (e.g. form reset, AI generation)
     useEffect(() => {
         if (editor && value !== editor.getHTML()) {
-            // Only update if content is different to avoid cursor jumps
-            // This is tricky, simplified check:
-            if (editor.getText() === "" && value === "") return;
-            // editor.commands.setContent(value);
+            if (!editor.isFocused || value === "") {
+                editor.commands.setContent(value);
+            }
         }
     }, [value, editor]);
 

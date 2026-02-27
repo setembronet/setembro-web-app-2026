@@ -40,6 +40,7 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 import { RichTextEditor } from "@/components/ui/rich-text-editor";
+import { FileUpload } from "@/components/ui/file-upload";
 
 
 // Schema
@@ -64,6 +65,7 @@ const formSchema = z.object({
     meta_title: z.string().optional(),
     meta_description: z.string().optional(),
     canonical_url: z.string().url({ message: "URL inválida" }).optional().or(z.literal("")),
+    download_pdf_url: z.string().url({ message: "URL inválida" }).optional().or(z.literal("")),
     faq_items: z.array(z.object({ question: z.string(), answer: z.string() })).optional(),
 });
 
@@ -101,6 +103,7 @@ export function PostForm({ initialData, isEditing = false, categories = [] }: Po
             meta_title: initialData?.meta_title || "",
             meta_description: initialData?.meta_description || "",
             canonical_url: initialData?.canonical_url || "",
+            download_pdf_url: initialData?.download_pdf_url || "",
             faq_items: initialData?.faq_items || [],
         },
     });
@@ -146,8 +149,13 @@ export function PostForm({ initialData, isEditing = false, categories = [] }: Po
                 form.setValue("faq_items", data.faq_items);
             }
             toast.success("Metadados SEO gerados!");
-        } catch (error) {
-            toast.error("Falha ao gerar SEO");
+        } catch (error: any) {
+            const msg = error.message?.toLowerCase() || "";
+            if (msg.includes("api key") || msg.includes("failed to generate")) {
+                toast.error("A Chave da API Gemini está inválida ou ausente no backend.", { duration: 6000 });
+            } else {
+                toast.error(`Falha ao gerar SEO: ${error.message}`);
+            }
         } finally {
             setIsGeneratingSEO(false);
         }
@@ -177,8 +185,13 @@ export function PostForm({ initialData, isEditing = false, categories = [] }: Po
 
             form.setValue("content", newContent);
             toast.success("Rascunho gerado perfeitamente!");
-        } catch (error) {
-            toast.error("Falha ao gerar o rascunho com IA.");
+        } catch (error: any) {
+            const msg = error.message?.toLowerCase() || "";
+            if (msg.includes("api key") || msg.includes("failed to generate") || msg.includes("fetch failed")) {
+                toast.error("A Chave da API Gemini está inválida, ausente ou o limite foi atingido.", { duration: 6000 });
+            } else {
+                toast.error(`Falha ao gerar o rascunho com IA: ${error.message}`);
+            }
         } finally {
             setIsGeneratingDraft(false);
         }
@@ -488,25 +501,20 @@ export function PostForm({ initialData, isEditing = false, categories = [] }: Po
                                     name="image"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>URL da Imagem</FormLabel>
+                                            <FormLabel>Imagem</FormLabel>
                                             <FormControl>
-                                                <Input placeholder="https://..." {...field} />
+                                                <FileUpload
+                                                    value={field.value}
+                                                    onChange={field.onChange}
+                                                    accept=".jpg,.jpeg,.png,.webp"
+                                                    bucket="blog_assets"
+                                                    folder="images"
+                                                />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )}
                                 />
-
-                                {form.watch("image") && (
-                                    <div className="aspect-video w-full rounded-md overflow-hidden bg-muted relative border">
-                                        <img
-                                            src={form.watch("image") || ""}
-                                            alt="Preview"
-                                            className="object-cover w-full h-full"
-                                            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-                                        />
-                                    </div>
-                                )}
 
                                 <FormField
                                     control={form.control}
@@ -516,6 +524,35 @@ export function PostForm({ initialData, isEditing = false, categories = [] }: Po
                                             <FormLabel>Texto Alternativo (Alt)</FormLabel>
                                             <FormControl>
                                                 <Input placeholder="Descreva a imagem..." {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            </CardContent>
+                        </Card>
+
+                        {/* Download PDF */}
+                        <Card className="shadow-sm">
+                            <CardHeader className="pb-3">
+                                <CardTitle className="text-base font-medium">Anexo (PDF)</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <FormField
+                                    control={form.control}
+                                    name="download_pdf_url"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Arquivo PDF</FormLabel>
+                                            <FormControl>
+                                                <FileUpload
+                                                    value={field.value}
+                                                    onChange={field.onChange}
+                                                    accept=".pdf"
+                                                    bucket="blog_assets"
+                                                    folder="pdfs"
+                                                    maxSizeMB={20}
+                                                />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>

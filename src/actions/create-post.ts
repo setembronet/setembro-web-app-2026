@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { generateEmbedding } from "@/lib/ai/gemini";
+import { syncPostToRAG } from "@/lib/ai/sync-rag";
 
 export async function createPost(prevState: any, formData: FormData) {
     const supabase = await createClient();
@@ -39,7 +40,9 @@ export async function createPost(prevState: any, formData: FormData) {
         author_id: defaultAuthor?.id, // Ensure author is linked
         excerpt: formData.get('excerpt') as string,
         content,
+        image: formData.get('image') as string,
         featured_image_alt: formData.get('featured_image_alt') as string,
+        download_pdf_url: formData.get('download_pdf_url') as string,
         // is_published: formData.get('is_published') === 'on', // Deprecated
         status: formData.get('status') as string || 'draft',
         published_at: formData.get('published_at') as string || new Date().toISOString(),
@@ -62,9 +65,23 @@ export async function createPost(prevState: any, formData: FormData) {
     };
     // --- Fim Integração IA ---
 
-    const { error } = await supabase
+    const { data: insertedPost, error } = await supabase
         .from('blog_posts')
-        .insert(finalData);
+        .insert(finalData)
+        .select()
+        .single();
+
+    if (!error && insertedPost) {
+        // --- Injeta o Artigo no Cérebro da Ana (RAG) ---
+        // A função interna já cuida do status (só vai se for 'published')
+        await syncPostToRAG(
+            insertedPost.id,
+            insertedPost.title,
+            insertedPost.content,
+            insertedPost.slug,
+            insertedPost.status
+        );
+    }
 
     if (error) {
         // If unique violation on slug, try appending random suffix

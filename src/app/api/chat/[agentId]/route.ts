@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { SupabaseAgentRepository } from '@/infrastructure/adapters/SupabaseAgentRepository';
 import { SupabaseVectorStore } from '@/infrastructure/adapters/SupabaseVectorStore';
+import { createClient } from '@/utils/supabase/server';
 import OpenAI from 'openai';
 
 // Initialize OpenAI client lazily to avoid build errors if env is missing
@@ -19,7 +20,9 @@ export async function POST(
     try {
         // Await params to access agentId
         const { agentId } = await params;
-        const { message, messages } = await request.json();
+        const { message, messages, postUrl, postTitle, sessionId: clientSessionId } = await request.json();
+        const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
+        const sessionId = clientSessionId || crypto.randomUUID();
 
         if (!message && (!messages || messages.length === 0)) {
             return NextResponse.json(
@@ -76,10 +79,31 @@ export async function POST(
 
         const reply = completion.choices[0].message.content;
 
-        // 7. Store Interaction (Optional - can be done via Supabase directly or another repository)
-        // For now, we return the response.
+        // 7. Store Interaction in chat_history for Analytics
+        const supabase = await createClient();
 
-        return NextResponse.json({ reply });
+        const conversationLog = [
+            ...(messages || [{ role: 'user', content: currentMessage }]),
+            { role: 'assistant', content: reply }
+        ];
+
+        const { error: historyError } = await supabase.from('chat_history').insert({
+            agent_id: agentId,
+            session_id: sessionId,
+            messages: conversationLog,
+            ip_address: ip,
+            post_url: postUrl || null,
+            post_title: postTitle || null,
+            metadata: {
+                user_agent: request.headers.get('user-agent')
+            }
+        });
+
+        if (historyError) {
+            console.error('Falha ao gravar histórico de rastreamento:', historyError);
+        }
+
+        return NextResponse.json({ reply, sessionId });
 
     } catch (error: unknown) {
         console.error('Error in chat API:', error);

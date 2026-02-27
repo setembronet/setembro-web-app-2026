@@ -10,6 +10,7 @@ const CategorySchema = z.object({
     name: z.string().min(1, "Nome é obrigatório"),
     slug: z.string().min(1, "Slug é obrigatório").regex(/^[a-z0-9-]+$/, "Slug deve conter apenas letras minúsculas, números e hífens"),
     description: z.string().optional(),
+    image: z.string().url({ message: "URL inválida" }).optional().or(z.literal("")),
 });
 
 export async function createCategory(prevState: any, formData: FormData) {
@@ -19,6 +20,7 @@ export async function createCategory(prevState: any, formData: FormData) {
         name: formData.get("name"),
         slug: formData.get("slug"),
         description: formData.get("description"),
+        image: formData.get("image"),
     });
 
     if (!validatedFields.success) {
@@ -28,12 +30,12 @@ export async function createCategory(prevState: any, formData: FormData) {
         };
     }
 
-    const { name, slug, description } = validatedFields.data;
+    const { name, slug, description, image } = validatedFields.data;
 
     try {
         const { error } = await supabase
             .from("categories")
-            .insert({ name, slug, description });
+            .insert({ name, slug, description, image });
 
         if (error) {
             if (error.code === '23505') { // Unique violation for slug
@@ -56,6 +58,7 @@ export async function updateCategory(id: string, prevState: any, formData: FormD
         name: formData.get("name"),
         slug: formData.get("slug"),
         description: formData.get("description"),
+        image: formData.get("image"),
     });
 
     if (!validatedFields.success) {
@@ -65,12 +68,12 @@ export async function updateCategory(id: string, prevState: any, formData: FormD
         };
     }
 
-    const { name, slug, description } = validatedFields.data;
+    const { name, slug, description, image } = validatedFields.data;
 
     try {
         const { error } = await supabase
             .from("categories")
-            .update({ name, slug, description, updated_at: new Date().toISOString() })
+            .update({ name, slug, description, image, updated_at: new Date().toISOString() })
             .eq("id", id);
 
         if (error) {

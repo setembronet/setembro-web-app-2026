@@ -1,7 +1,23 @@
+"use client";
+
 import { KeyRound, BookOpen } from 'lucide-react';
-import Link from 'next/link';
+import { fingerprintLead } from "@/actions/fingerprint-lead";
 
 export function PropriedadeIntelectual() {
+    const handleConciergeOpen = async () => {
+        try {
+            await fingerprintLead(window.location.href, "layouts-premium: btn_propriedade_cta");
+        } catch (error) {
+            console.error("Tracking failure:", error);
+        }
+        const event = new CustomEvent("open-concierge", {
+            detail: {
+                message: "Olá! Projetos de layouts premium oferecem o equilíbrio perfeito entre agilidade, design pré-aprovado e excelente custo-benefício. Sou a Ana, orquestradora da Setembro.net. Me conte: qual é o segmento da sua empresa?",
+                context: "layouts-premium"
+            }
+        });
+        window.dispatchEvent(event);
+    };
     return (
         <section className="relative w-full py-24 md:py-32 bg-neutral-900 dark:bg-black text-white selection:bg-blue-600 selection:text-white">
             <div className="container px-4 md:px-6 mx-auto">
@@ -43,10 +59,8 @@ export function PropriedadeIntelectual() {
                         </div>
 
                         <div className="pt-8 w-full">
-                            <Link
-                                href="https://wa.me/5581999999999" // TODO: Update WhatsApp number
-                                target="_blank"
-                                rel="noopener noreferrer"
+                            <button
+                                onClick={handleConciergeOpen}
                                 className="group relative inline-flex items-center justify-center w-full sm:w-auto px-10 py-5 text-sm font-bold tracking-widest uppercase text-neutral-900 bg-white overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)]"
                             >
                                 <span className="absolute inset-0 w-full h-full bg-blue-600 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
@@ -56,7 +70,7 @@ export function PropriedadeIntelectual() {
                                         <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                     </svg>
                                 </span>
-                            </Link>
+                            </button>
                         </div>
                     </div>
 
