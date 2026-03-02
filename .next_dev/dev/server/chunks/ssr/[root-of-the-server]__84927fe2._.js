@@ -276,9 +276,9 @@ async function LatestPostsSection() {
     const supabase = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$supabase$2f$server$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["createClient"])();
     const { data: posts } = await supabase.from("blog_posts").select(`
             *,
-            category:categories(name, slug, image),
-            author:authors(name, avatar_url)
-        `).eq("is_published", true).order("published_at", {
+            author:author_id(name, avatar_url),
+            category:category_id(name, slug, image)
+        `).eq("status", "published").lte("published_at", new Date().toISOString()).order("published_at", {
         ascending: false
     }).limit(3);
     console.log("LatestPostsSection: Fetched posts:", posts?.length, posts);
@@ -302,7 +302,7 @@ async function LatestPostsSection() {
                                     children: "Últimas do Blog"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/LatestPostsSection.tsx",
-                                    lineNumber: 33,
+                                    lineNumber: 34,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -310,13 +310,13 @@ async function LatestPostsSection() {
                                     children: "Fique por dentro das novidades sobre tecnologia, IA e automação."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/LatestPostsSection.tsx",
-                                    lineNumber: 36,
+                                    lineNumber: 37,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/LatestPostsSection.tsx",
-                            lineNumber: 32,
+                            lineNumber: 33,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Button"], {
@@ -331,24 +331,24 @@ async function LatestPostsSection() {
                                         className: "h-4 w-4"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/LatestPostsSection.tsx",
-                                        lineNumber: 42,
+                                        lineNumber: 43,
                                         columnNumber: 50
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/LatestPostsSection.tsx",
-                                lineNumber: 41,
+                                lineNumber: 42,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/LatestPostsSection.tsx",
-                            lineNumber: 40,
+                            lineNumber: 41,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/LatestPostsSection.tsx",
-                    lineNumber: 31,
+                    lineNumber: 32,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -364,12 +364,12 @@ async function LatestPostsSection() {
                                         className: "h-full w-full object-cover transition-transform duration-300 hover:scale-105"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/LatestPostsSection.tsx",
-                                        lineNumber: 53,
+                                        lineNumber: 54,
                                         columnNumber: 37
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/LatestPostsSection.tsx",
-                                    lineNumber: 51,
+                                    lineNumber: 52,
                                     columnNumber: 33
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CardHeader"], {
@@ -383,7 +383,7 @@ async function LatestPostsSection() {
                                                     children: post.category?.name || "Geral"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/LatestPostsSection.tsx",
-                                                    lineNumber: 62,
+                                                    lineNumber: 63,
                                                     columnNumber: 37
                                                 }, this),
                                                 post.published_at && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -393,7 +393,7 @@ async function LatestPostsSection() {
                                                             className: "h-3 w-3"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/LatestPostsSection.tsx",
-                                                            lineNumber: 67,
+                                                            lineNumber: 68,
                                                             columnNumber: 45
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -402,19 +402,19 @@ async function LatestPostsSection() {
                                                             })
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/LatestPostsSection.tsx",
-                                                            lineNumber: 68,
+                                                            lineNumber: 69,
                                                             columnNumber: 45
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/LatestPostsSection.tsx",
-                                                    lineNumber: 66,
+                                                    lineNumber: 67,
                                                     columnNumber: 41
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/LatestPostsSection.tsx",
-                                            lineNumber: 61,
+                                            lineNumber: 62,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
@@ -425,18 +425,18 @@ async function LatestPostsSection() {
                                                 children: post.title
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/LatestPostsSection.tsx",
-                                                lineNumber: 77,
+                                                lineNumber: 78,
                                                 columnNumber: 37
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/LatestPostsSection.tsx",
-                                            lineNumber: 76,
+                                            lineNumber: 77,
                                             columnNumber: 33
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/LatestPostsSection.tsx",
-                                    lineNumber: 60,
+                                    lineNumber: 61,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -446,12 +446,12 @@ async function LatestPostsSection() {
                                         children: post.excerpt
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/LatestPostsSection.tsx",
-                                        lineNumber: 83,
+                                        lineNumber: 84,
                                         columnNumber: 33
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/LatestPostsSection.tsx",
-                                    lineNumber: 82,
+                                    lineNumber: 83,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CardFooter"], {
@@ -466,7 +466,7 @@ async function LatestPostsSection() {
                                                 className: "h-6 w-6 rounded-full"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/LatestPostsSection.tsx",
-                                                lineNumber: 91,
+                                                lineNumber: 92,
                                                 columnNumber: 41
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -478,46 +478,46 @@ async function LatestPostsSection() {
                                                         children: post.author?.name
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/LatestPostsSection.tsx",
-                                                        lineNumber: 98,
+                                                        lineNumber: 99,
                                                         columnNumber: 45
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/LatestPostsSection.tsx",
-                                                lineNumber: 97,
+                                                lineNumber: 98,
                                                 columnNumber: 37
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/LatestPostsSection.tsx",
-                                        lineNumber: 88,
+                                        lineNumber: 89,
                                         columnNumber: 33
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/LatestPostsSection.tsx",
-                                    lineNumber: 87,
+                                    lineNumber: 88,
                                     columnNumber: 29
                                 }, this)
                             ]
                         }, post.id, true, {
                             fileName: "[project]/src/components/LatestPostsSection.tsx",
-                            lineNumber: 49,
+                            lineNumber: 50,
                             columnNumber: 25
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/src/components/LatestPostsSection.tsx",
-                    lineNumber: 47,
+                    lineNumber: 48,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/LatestPostsSection.tsx",
-            lineNumber: 30,
+            lineNumber: 31,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/LatestPostsSection.tsx",
-        lineNumber: 29,
+        lineNumber: 30,
         columnNumber: 9
     }, this);
 }

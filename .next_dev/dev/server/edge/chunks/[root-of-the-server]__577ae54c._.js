@@ -61,19 +61,41 @@ async function updateSession(request, response) {
                 cookies.forEach((cookie)=>redirectResponse.cookies.set(cookie.name, cookie.value, cookie));
                 return redirectResponse;
             }
-            // Check for Admin Role using user_metadata
+            // Roles allowed in the admin pane
             const role = user.user_metadata?.role;
-            console.log("Middleware Admin Check:", {
+            const status = user.user_metadata?.status;
+            const isAdmin = role === 'admin';
+            const isEditor = role === 'editor';
+            const isBlocked = status === 'blocked';
+            console.log("Middleware Role Check:", {
                 userId: user.id,
-                role
+                role,
+                status
             });
-            // If no role or not admin, redirect to home
-            if (role !== 'admin') {
-                console.error("Middleware: Not Admin (Metadata check), Redirecting to /");
+            // If user has no valid role or is blocked, redirect to home
+            if (!isAdmin && !isEditor || isBlocked) {
+                console.error("Middleware: Not Admin or Editor, or Blocked. Redirecting to /");
                 const url = request.nextUrl.clone();
                 url.pathname = '/';
                 const redirectResponse = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$esm$2f$server$2f$web$2f$exports$2f$index$2e$js__$5b$middleware$2d$edge$5d$__$28$ecmascript$29$__["NextResponse"].redirect(url);
-                // Copy cookies from supabaseResponse to redirectResponse
+                const cookies = supabaseResponse.cookies.getAll();
+                cookies.forEach((cookie)=>redirectResponse.cookies.set(cookie.name, cookie.value, cookie));
+                return redirectResponse;
+            }
+            // Route-level restrictions for editors
+            const currentPath = request.nextUrl.pathname;
+            const restrictedForEditors = [
+                '/admin/team',
+                '/admin/settings',
+                '/admin/agents',
+                '/admin/rag',
+                '/admin/leads'
+            ];
+            if (isEditor && restrictedForEditors.some((route)=>currentPath.startsWith(route))) {
+                console.error("Middleware: Editor attempting to access restricted route, Redirecting to /admin");
+                const url = request.nextUrl.clone();
+                url.pathname = '/admin';
+                const redirectResponse = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$esm$2f$server$2f$web$2f$exports$2f$index$2e$js__$5b$middleware$2d$edge$5d$__$28$ecmascript$29$__["NextResponse"].redirect(url);
                 const cookies = supabaseResponse.cookies.getAll();
                 cookies.forEach((cookie)=>redirectResponse.cookies.set(cookie.name, cookie.value, cookie));
                 return redirectResponse;

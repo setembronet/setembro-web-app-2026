@@ -1,7 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
 // import { useTranslations } from "next-intl"; // Removed
 import { ThemeToggle } from "@/components/ThemeToggle";
 // import LanguageSwitcher from "@/components/LanguageSwitcher"; // Removed
@@ -13,6 +15,16 @@ export default function AdminLayout({
 }) {
     // const t = useTranslations("AdminLayout"); // Removed
     const pathname = usePathname();
+    const [role, setRole] = useState<string | null>(null);
+
+    useEffect(() => {
+        const fetchRole = async () => {
+            const supabase = createClient();
+            const { data: { user } } = await supabase.auth.getUser();
+            setRole(user?.user_metadata?.role || null);
+        };
+        fetchRole();
+    }, []);
 
     const navItems = [
         { href: "/admin", label: "Visão Geral" },
@@ -23,6 +35,7 @@ export default function AdminLayout({
         { href: "/admin/testimonials", label: "Depoimentos" },
         { href: "/admin/agents", label: "Agentes" },
         { href: "/admin/rag", label: "Memória IA (RAG)" },
+        { href: "/admin/team", label: "Equipe" },
         { href: "/admin/settings", label: "Configurações" },
     ];
 
@@ -35,18 +48,28 @@ export default function AdminLayout({
                     </Link>
                 </div>
                 <nav className="grid gap-2 p-4 text-sm font-medium">
-                    {navItems.map((item) => (
-                        <Link
-                            key={item.href}
-                            href={item.href}
-                            className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary ${pathname.startsWith(item.href)
-                                ? "bg-muted text-primary"
-                                : "text-muted-foreground"
-                                }`}
-                        >
-                            {item.label}
-                        </Link>
-                    ))}
+                    {navItems.map((item) => {
+                        // Hide restricted links for editors
+                        if (
+                            role === 'editor' &&
+                            ['/admin/team', '/admin/settings', '/admin/agents', '/admin/rag', '/admin/leads'].includes(item.href)
+                        ) {
+                            return null;
+                        }
+
+                        return (
+                            <Link
+                                key={item.href}
+                                href={item.href}
+                                className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary ${pathname.startsWith(item.href)
+                                    ? "bg-muted text-primary"
+                                    : "text-muted-foreground"
+                                    }`}
+                            >
+                                {item.label}
+                            </Link>
+                        );
+                    })}
                 </nav>
             </aside>
             <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-64 w-full">

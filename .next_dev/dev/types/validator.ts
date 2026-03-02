@@ -182,6 +182,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../../src/app/admin/team/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/admin/team">> = Specific
+  const handler = {} as typeof import("../../../src/app/admin/team/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../src/app/admin/testimonials/[id]/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/admin/testimonials/[id]">> = Specific
@@ -231,6 +240,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 {
   type __IsExpected<Specific extends AppPageConfig<"/auth/auth-code-error">> = Specific
   const handler = {} as typeof import("../../../src/app/auth/auth-code-error/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../src/app/auth/update-password/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/auth/update-password">> = Specific
+  const handler = {} as typeof import("../../../src/app/auth/update-password/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check

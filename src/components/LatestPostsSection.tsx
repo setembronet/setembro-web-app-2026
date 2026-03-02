@@ -12,10 +12,11 @@ export async function LatestPostsSection() {
         .from("blog_posts")
         .select(`
             *,
-            category:categories(name, slug, image),
-            author:authors(name, avatar_url)
+            author:author_id(name, avatar_url),
+            category:category_id(name, slug, image)
         `)
-        .eq("is_published", true)
+        .eq("status", "published")
+        .lte("published_at", new Date().toISOString())
         .order("published_at", { ascending: false })
         .limit(3);
 
